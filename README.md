@@ -1,2 +1,2 @@
-# Fontend-Project
+# Frontend-Project
 Projeto Fullstack - Repositório Frontend
