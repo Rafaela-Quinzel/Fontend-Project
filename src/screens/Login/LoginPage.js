@@ -1,13 +1,15 @@
 import React from 'react'
 import * as S from './styled'
 import { useHistory } from 'react-router-dom'
+import logo from '../../assets/logo.svg'
 import { useForm } from '../../hooks/useForm'
 import { useProtectPage } from '../../hooks/useProtectPage'
 import { login } from '../../services/User'
+import { goToSignUp } from '../../routes/coordinator'
 import { TextField, Button } from '@material-ui/core'
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff'
 import VisibilityIcon from '@material-ui/icons/Visibility'
-import logo from '../../assets/logo.svg'
+
 
 
 
@@ -100,7 +102,7 @@ function LoginPage() {
           </Button>
                     <Button
                         color="primary"
-                    // onClick={() => goToSignUp(history)}
+                    onClick={() => goToSignUp(history)}
                     >
                         Não possui cadastro?
                         Clique aqui.

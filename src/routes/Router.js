@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom"
 import SplashScreen from "../screens/SplashScreen/SplashScreen"
 import LoginPage from "../screens/Login/LoginPage"
 import NotFoundPage from "../screens/Error/NotFoundPage"
+import SignUpPage from "../screens/Signup/SignupPage"
 
 
 export default function Router() {
@@ -16,6 +17,9 @@ export default function Router() {
             <Route exact path="/login">
                 <LoginPage />
             </Route>
+            <Route exact path="/cadastro">
+          <SignUpPage />
+        </Route>
             <Route>
                 <NotFoundPage />
             </Route>

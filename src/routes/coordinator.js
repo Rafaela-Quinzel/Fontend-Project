@@ -7,6 +7,13 @@ export const goToLoginPage = (history) => {
     history.push('/login')
 }
 
+export const goToSignUp =(history)=>{
+    history.push('/cadastro')
+}
+
+export const goToHomePage =(history)=> {
+    history.push('/pagina-principal')
+}
 
 export const logout = (history) => {
     localStorage.removeItem('token')
