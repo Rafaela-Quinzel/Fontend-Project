@@ -7,6 +7,7 @@ import { login } from '../../services/User'
 import { TextField, Button } from '@material-ui/core'
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff'
 import VisibilityIcon from '@material-ui/icons/Visibility'
+import logo from '../../assets/logo.svg'
 
 
 
@@ -50,10 +51,7 @@ function LoginPage() {
 
     return (
         <S.Wrapper>
-            <S.TitlePage>
-                <b>Entrar</b>
-            </S.TitlePage>
-
+            <S.Logo src={logo} />
             <S.FormInputsLogin onSubmit={handleSubmit}>
                 <TextField
                     value={form.email}

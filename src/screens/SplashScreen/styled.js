@@ -18,3 +18,5 @@ export const AnimationContainer = styled.div`
   margin-top: 20%;
 `
 
+
+
