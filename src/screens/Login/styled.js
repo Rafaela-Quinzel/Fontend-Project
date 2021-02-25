@@ -30,9 +30,9 @@ export const AreaButton = styled.div`
   flex-direction: column;
   row-gap: 2em;
   margin: 20px 0 20px;
-`;
+`
 
 export const Logo = styled.img`
   width: 250px;
-
+  margin: 5%;
 `
