@@ -14,6 +14,7 @@ import VisibilityIcon from '@material-ui/icons/Visibility'
 
 
 function LoginPage() {
+    window.document.title = "SoundLab"
 
     const [showPassword, setShowPassword] = React.useState(false)
 
@@ -102,7 +103,7 @@ function LoginPage() {
           </Button>
                     <Button
                         color="primary"
-                    onClick={() => goToSignUp(history)}
+                        onClick={() => goToSignUp(history)}
                     >
                         Não possui cadastro?
                         Clique aqui.

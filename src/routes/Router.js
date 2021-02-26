@@ -4,6 +4,7 @@ import SplashScreen from "../screens/SplashScreen/SplashScreen"
 import LoginPage from "../screens/Login/LoginPage"
 import NotFoundPage from "../screens/Error/NotFoundPage"
 import SignUpPage from "../screens/Signup/SignupPage"
+import HomePage from "../screens/Home/HomePage"
 
 
 export default function Router() {
@@ -18,8 +19,11 @@ export default function Router() {
                 <LoginPage />
             </Route>
             <Route exact path="/cadastro">
-          <SignUpPage />
-        </Route>
+                <SignUpPage />
+            </Route>
+            <Route exact path="/pagina-principal">
+                <HomePage />
+            </Route>
             <Route>
                 <NotFoundPage />
             </Route>
