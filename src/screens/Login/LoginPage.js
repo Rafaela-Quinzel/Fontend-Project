@@ -1,16 +1,20 @@
 import React from 'react'
 import * as S from './styled'
 import { useHistory } from 'react-router-dom'
+import logo from '../../assets/logo.svg'
 import { useForm } from '../../hooks/useForm'
 import { useProtectPage } from '../../hooks/useProtectPage'
 import { login } from '../../services/User'
+import { goToSignUp } from '../../routes/coordinator'
 import { TextField, Button } from '@material-ui/core'
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff'
 import VisibilityIcon from '@material-ui/icons/Visibility'
 
 
 
+
 function LoginPage() {
+    window.document.title = "SoundLab"
 
     const [showPassword, setShowPassword] = React.useState(false)
 
@@ -50,10 +54,7 @@ function LoginPage() {
 
     return (
         <S.Wrapper>
-            <S.TitlePage>
-                <b>Entrar</b>
-            </S.TitlePage>
-
+            <S.Logo src={logo} />
             <S.FormInputsLogin onSubmit={handleSubmit}>
                 <TextField
                     value={form.email}
@@ -102,7 +103,7 @@ function LoginPage() {
           </Button>
                     <Button
                         color="primary"
-                    // onClick={() => goToSignUp(history)}
+                        onClick={() => goToSignUp(history)}
                     >
                         Não possui cadastro?
                         Clique aqui.

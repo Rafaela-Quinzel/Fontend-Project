@@ -7,6 +7,7 @@ import animationData from '../../animation/animation.json'
 
 
 
+
 function SplashScreen() {
 
   const [ animationState ] = useState({
