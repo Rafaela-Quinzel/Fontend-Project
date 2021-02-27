@@ -4,6 +4,7 @@ import logo from '../../assets/logo.svg'
 import { useHistory } from 'react-router-dom'
 import { useForm } from '../../hooks/useForm'
 import { signUp } from '../../services/User'
+import { goBack } from '../../routes/coordinator'
 import { Visibility, VisibilityOff } from "@material-ui/icons"
 import { InputLabel, IconButton, InputAdornment, OutlinedInput, FormControl, TextField, Button } from '@material-ui/core'
 
@@ -62,6 +63,7 @@ function SignUpPage() {
 
   return (
     <S.Wrapper>
+      <S.ArrowBackIosIconStyled onClick={() => goBack(history)}/>
       <S.AreaLogo>
       <S.Logo src={logo} />
       </S.AreaLogo>

@@ -3,7 +3,7 @@ export const goToSlashScreen = (history) => {
 }
 
 
-export const goToLoginPage = (history) => {
+export const goToLogin = (history) => {
     history.push('/login')
 }
 
@@ -11,21 +11,21 @@ export const goToSignUp =(history)=>{
     history.push('/cadastro')
 }
 
-export const goToHomePage =(history)=> {
+export const goToHome =(history)=> {
     history.push('/pagina-principal')
 }
 
-export const logout = (history) => {
-    localStorage.removeItem('token')
-    history.push('/login')
+export const goToAddMusics =(history)=> {
+    history.push('/adicionar-musicas')
 }
 
-export const logoutProfile = (history) => {
+export const logout = (history) => {
     if (window.confirm('Você tem certeza que deseja sair :( ?')) {
         localStorage.removeItem('token')
         history.push('/login')
     }
 }
+
 
 export const goBack = (history) => {
     history.goBack()

@@ -4,11 +4,13 @@ import { useHistory } from 'react-router-dom'
 import logo from '../../assets/logo.svg'
 import { useForm } from '../../hooks/useForm'
 import { useProtectPage } from '../../hooks/useProtectPage'
+import useUnProtectedPage from '../../hooks/useUnProtectedPage'
 import { login } from '../../services/User'
 import { goToSignUp } from '../../routes/coordinator'
 import { TextField, Button } from '@material-ui/core'
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff'
 import VisibilityIcon from '@material-ui/icons/Visibility'
+
 
 
 
@@ -25,6 +27,7 @@ function LoginPage() {
     })
 
     useProtectPage()
+    useUnProtectedPage()
     const history = useHistory()
 
 

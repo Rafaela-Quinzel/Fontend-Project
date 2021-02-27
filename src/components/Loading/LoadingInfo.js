@@ -6,7 +6,7 @@ import { CircularProgress } from '@material-ui/core'
 /*Tags Styled*/
 import { LoadingContainer } from './styled'
 
-export default function Loading() {
+export default function LoadingInfo() {
   return (
     <LoadingContainer>
       <CircularProgress />
