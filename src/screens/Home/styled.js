@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {primaryColor, secondaryColor, mainWhite} from '../../constants/Colors'
+import { primaryColor, secondaryColor, mainWhite } from '../../constants/Colors'
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft'
 import ArrowRightIcon from '@material-ui/icons/ArrowRight'
 import { CircularProgress } from '@material-ui/core'
@@ -10,33 +10,28 @@ import EditIcon from "@material-ui/icons/Edit"
 // Styled HomePage //
 export const MainContainer = styled.div`
     width: 100vw;
-    max-width: 420px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 70px; 
+    height: 100vh;
+    /* max-width: 420px; */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     margin: 0 auto; 
 `
 
 export const CardContainer = styled.div`
-    width: 100vw;
-    max-width: 420px;
-    margin-bottom: 70px;
-    margin: 0 auto 10px;
+    width: 20vw;
+    height: 22vh;
+    /* max-width: 420px; */
+    /* margin-bottom: 70px; */
+    margin: 10px auto 10px;
     border-radius: 10px;
+    border: solid 1px black;
 `
 
 export const NoResultsContainer = styled.div`
-    margin: 30px auto 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin: auto 0 auto;
+ 
 `
 
-export const NoResults = styled.span`
-    font-weight: bold;
-`
 
 export const directionNamesFilter = styled.div`
   display: flex;
@@ -81,12 +76,9 @@ export const IconContainer = styled.div`
     align-items: center;
 `
 
-export const TextContainer = styled.div`
-    display: flex;
-    flex-direction:column;
-    justify-content: center;
-    align-items: stretch;
-    margin-left: 32px;
+export const TitlePageContainer = styled.div`
+   text-align: center;
+   margin: 4%;
 `
 
 export const Subtotal = styled.p`
@@ -133,15 +125,32 @@ export const LineHeader = styled.hr`
   width: 97%;
 `
 
+export const HeaderContainer = styled.div`
+width: 100vw;
+  
+
+`
+
 export const Wrapper = styled.div`
   width: 100vw;
-  max-width: 420px;
-  display: flex;
+  /* max-width: 420px; */
+  /* display: flex;
   flex-direction: column;
   align-self: center;
   justify-content: center;
+  text-align: center; */
   margin: 0 auto;
-` 
+`
+
+export const NoResults = styled.div`
+  display: grid;
+  justify-items: center;
+  margin: 15%;
+`
+
+export const AreaButton = styled.div`
+  margin: 5%;
+`
 
 
 

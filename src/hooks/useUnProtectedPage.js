@@ -12,6 +12,5 @@ export default function useUnProtectedPage() {
         if (token) {
             goToHomePage(history)
         }
-
     }, [history, token])
 }

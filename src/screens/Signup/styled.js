@@ -1,11 +1,13 @@
 import styled from "styled-components"
 import { mainColor } from "../../constants/Colors"
 
+/*Material UI*/
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
+
 
 //Styled SignUp
 export const Wrapper = styled.div` 
   width: 100vw;
-  max-width: 420px;
   display: flex;
   flex-direction: column;
   align-self: center;
@@ -42,3 +44,9 @@ export const AreaLogo = styled.div`
   align-items: center;
   justify-content: center;
 `
+
+export const ArrowBackIosIconStyled = styled(ArrowBackIosIcon)`
+  color: ${mainColor};
+  margin: 2%;
+`
+

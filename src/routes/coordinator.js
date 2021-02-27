@@ -16,8 +16,10 @@ export const goToHomePage =(history)=> {
 }
 
 export const logout = (history) => {
-    localStorage.removeItem('token')
-    history.push('/login')
+    if (window.confirm('Você tem certeza que deseja sair :( ?')) {
+        localStorage.removeItem('token')
+        history.push('/login')
+    }
 }
 
 export const logoutProfile = (history) => {
