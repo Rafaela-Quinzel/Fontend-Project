@@ -5,6 +5,7 @@ import LoginPage from "../screens/Login/LoginPage"
 import NotFoundPage from "../screens/Error/NotFoundPage"
 import SignUpPage from "../screens/Signup/SignupPage"
 import HomePage from "../screens/Home/HomePage"
+import AddMusicsPage from '../screens/AddMusics/AddMusicsPage'
 
 
 export default function Router() {
@@ -23,6 +24,9 @@ export default function Router() {
             </Route>
             <Route exact path="/pagina-principal">
                 <HomePage />
+            </Route>
+            <Route exact path="/adicionar-musicas">
+                <AddMusicsPage />
             </Route>
             <Route>
                 <NotFoundPage />

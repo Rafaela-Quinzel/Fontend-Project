@@ -1,10 +1,12 @@
 import React from 'react'
 import * as S from './styled'
+import { useHistory } from 'react-router-dom'
 import { useRequestData } from '../../hooks/useRequestData'
 import { BASE_URL } from '../../constants/RequestConfig'
 import { Button } from '@material-ui/core'
 import SearchAppBar from '../../components/AppBar/AppBar'
 import LoadingInfo from '../../components/Loading/LoadingInfo'
+import { goToAddMusics } from '../../routes/coordinator'
 
 
 function HomePage() {
@@ -12,9 +14,9 @@ function HomePage() {
         headers: {
             Authorization: window.localStorage.getItem('token')
         }
-    };
+    }
 
-    // const history = useHistory()
+    const history = useHistory()
 
 
     const getMusics = useRequestData(`${BASE_URL}/music`, undefined, axiosConfig)
@@ -32,7 +34,7 @@ function HomePage() {
                                 variant='contained'
                                 color="secondary"
                                 type="submit"
-                            // onClick={() => goToSignUp(history)}
+                            onClick={() => goToAddMusics(history)}
                             >
                                 Cadastrar músicas
                             </Button>

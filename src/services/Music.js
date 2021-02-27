@@ -1,18 +1,14 @@
-// import axios from 'axios'
-// import { BASE_URL } from '../constants/RequestConfig'
-// import { goToHomePage } from '../routes/coordinator'
+import axios from 'axios'
+import { BASE_URL } from '../constants/RequestConfig'
+import { goToHome } from '../routes/coordinator'
 
 
-// export const getMusics = (setMusics) => {
-//     axios.get(`${BASE_URL}/music`, {
-//       headers: {
-//         Authorization: localStorage.getItem("token")
-//       }
-//     })
-//       .then(response => {
-//         setMusics(response.data)
-//       }).catch(error => {
-//         console.log(error.message)
-//       })
-//   }
-  
+export const addMusic = (body, history) => {
+    axios.post(`${BASE_URL}/music/create`, body)
+        .then(response => {
+            window.localStorage.setItem('token', response.data.token)
+            goToHome(history)
+        }).catch(error => {
+            console.log(error.message)
+        })
+}

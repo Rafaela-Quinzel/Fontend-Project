@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import * as S from './styled'
-import { goToLoginPage } from '../../routes/coordinator'
+import { goToLogin } from '../../routes/coordinator'
 import Lottie from 'react-lottie'
 import animationData from '../../animation/animation.json'
 
@@ -18,7 +18,7 @@ function SplashScreen() {
 
   useEffect(() => {
     setTimeout(() => {
-      goToLoginPage(history)
+      goToLogin(history)
     }, 3000)
   }, [history])
 

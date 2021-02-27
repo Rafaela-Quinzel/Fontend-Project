@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
-import { goToHomePage } from '../routes/coordinator'
+import { goToHome } from '../routes/coordinator'
 
 
 export default function useUnProtectedPage() {
@@ -10,7 +10,7 @@ export default function useUnProtectedPage() {
 
     useEffect(() => {
         if (token) {
-            goToHomePage(history)
+            goToHome(history)
         }
     }, [history, token])
 }

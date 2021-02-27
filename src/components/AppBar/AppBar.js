@@ -83,7 +83,7 @@ export default function SearchAppBar() {
       <AppBar position="static">
         <Toolbar>
           <PowerSettingsNewIcon className={classes.powerIcon} onClick={() => logout(history)}/>
-          <Typography className={classes.title} variant="h7" noWrap>
+          <Typography className={classes.title} noWrap>
             Logout
           </Typography>
           <div className={classes.search}>
