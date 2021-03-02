@@ -66,9 +66,7 @@ function HomePage() {
                         {getMusics && getMusics.map((music) => {
 
                             return (
-                                <S.Wrapper
-
-                                >
+                                <S.Wrapper>
                                     {openModal ? (
                                         <Modal
                                             close={handleCloseModal}
