@@ -7,10 +7,8 @@ import SearchAppBar from '../components/AppBar/AppBar'
 import '../styles/global.css'
 
 
-
 function App() {
   window.document.title = "SoundLab"
- 
 
   return (
     <ThemeProvider theme={theme}>

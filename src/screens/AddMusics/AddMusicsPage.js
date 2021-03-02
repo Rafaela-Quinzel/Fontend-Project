@@ -5,11 +5,7 @@ import { useHistory } from 'react-router-dom'
 import { useForm } from '../../hooks/useForm'
 import { addMusic } from '../../services/Music'
 import { goBack } from '../../routes/coordinator'
-// import GenreToggleGroup from '../../components/GenreToggleGroup/GenreToggleGroup'
-import {  TextField, Button } from '@material-ui/core'
-
-
-
+import { TextField, Button } from '@material-ui/core'
 
 
 function AddMusicsPage() {
@@ -55,7 +51,6 @@ function AddMusicsPage() {
             <S.TitlePage>Adcionar música</S.TitlePage>
 
             <S.FormConteiner onSubmit={onSubmitForm}>
-
                 <TextField
                     value={form.title}
                     onChange={onChange}
@@ -107,8 +102,8 @@ function AddMusicsPage() {
                 <TextField
                     value={genres}
                     onChange={handleToggleChange}
-                /> 
-                <br /> 
+                />
+                <br />
 
                 <Button
                     variant='contained'
@@ -116,7 +111,7 @@ function AddMusicsPage() {
                     type="submit"
                 >
                     ADICIONAR
-        </Button>
+                </Button>
             </S.FormConteiner>
         </S.Wrapper>
     )

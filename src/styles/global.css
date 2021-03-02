@@ -2,12 +2,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Inter", "Rajdhani", sans-serif;  
 }
 
 
 @media(max-width: 1080px) {
     html {
         font-size: 93.75%;
+        color: #313131;
     }
 }
 
@@ -20,4 +22,7 @@
 
 body, input, textarea, button {
     font: 400 1rem "Inter", sans-serif;
+    background: rgb(219, 218, 218);
 }
+
+
