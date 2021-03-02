@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import * as S from './styled'
 import { useHistory } from 'react-router-dom'
 import { useRequestData } from '../../hooks/useRequestData'
@@ -7,9 +7,16 @@ import { Button } from '@material-ui/core'
 import SearchAppBar from '../../components/AppBar/AppBar'
 import LoadingInfo from '../../components/Loading/LoadingInfo'
 import { goToAddMusics } from '../../routes/coordinator'
+import { Modal } from '../../components/Modal/Modal'
+import MusicsCard from '../../components/MusicsCard/MusicsCard'
+
 
 
 function HomePage() {
+
+    const [openModal, setOpenModal] = useState(false)
+
+
     const axiosConfig = {
         headers: {
             Authorization: window.localStorage.getItem('token')
@@ -20,6 +27,15 @@ function HomePage() {
 
 
     const getMusics = useRequestData(`${BASE_URL}/music`, undefined, axiosConfig)
+
+    const handleOpenModal = () => {
+        setOpenModal(!openModal)
+    }
+
+    const handleCloseModal = (event) => {
+        event.preventDefault()
+        setOpenModal(false)
+    }
 
 
     return getMusics ? (
@@ -34,7 +50,7 @@ function HomePage() {
                                 variant='contained'
                                 color="secondary"
                                 type="submit"
-                            onClick={() => goToAddMusics(history)}
+                                onClick={() => goToAddMusics(history)}
                             >
                                 Cadastrar músicas
                             </Button>
@@ -44,24 +60,33 @@ function HomePage() {
                     <div>
                         <SearchAppBar />
                         <S.TitlePageContainer>
-                            <h1>Lista de Músicas</h1>
+                            <S.TitlePage>Lista de Músicas</S.TitlePage>
                         </S.TitlePageContainer>
 
                         {getMusics && getMusics.map((music) => {
 
                             return (
-                                <S.MainContainer key={music.id}>
-                                    <S.CardContainer>
-                                        <p>{music.title}</p>
-                                        <p>{music.author}</p>
-                                    </S.CardContainer>
+                                <S.Wrapper
 
-                                </S.MainContainer>
+                                >
+                                    {openModal ? (
+                                        <Modal
+                                            close={handleCloseModal}
+                                        />
+                                    ) : (
+                                            <S.MainContainer>
+                                                <MusicsCard
+                                                    music={music}
+                                                    open={handleOpenModal}
+                                                />
+                                            </S.MainContainer>
+                                        )}
+
+                                </S.Wrapper>
                             )
                         })}
                     </div>
                 )}
-
         </S.Wrapper>
 
     ) : (
@@ -69,8 +94,6 @@ function HomePage() {
                 <SearchAppBar />
                 <LoadingInfo />
             </>
-
-
         )
 }
 export default HomePage

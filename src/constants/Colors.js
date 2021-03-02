@@ -7,11 +7,11 @@ export const secondaryColor = '#50E3C2'
 // cores personalizadas
 export const mainColor = '#BD10E0'
 
-export const mainGray =  '#FAFAFA'
+export const mainGray =  '#313131'
 
 export const mainWhite = '#FFFFFF'
 
-export const mainGreen = '#50E3C2'
-
 export const mainRed = 'red'
+
+
 

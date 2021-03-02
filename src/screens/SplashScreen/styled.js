@@ -1,10 +1,7 @@
 import styled from 'styled-components'
-import { mainGray } from '../../constants/Colors'
-
 
 
 export const ContainerHome = styled.div`
-  background-color: ${mainGray};
   height: 100%;
   width: 100%;
   position: fixed;

@@ -24,10 +24,8 @@ function SignUpPage() {
     confirmPassword: "" 
   })
 
-
   const history = useHistory()
   
-
   const handleInputChange = (event) => {
     const {value, name} = event.target
 
@@ -35,8 +33,6 @@ function SignUpPage() {
    
   }
 
-
-  // Função para mostrar a senha ou não //
   const handleShowPassword = () => {
      setShowPassword(!showPassword)
   }
@@ -45,9 +41,6 @@ function SignUpPage() {
     setShowConfirmPassword(!showConfirmPassword)
   }
 
-
-
-   // para validar as duas senhas //
   const validate = (event) => {
     const passwordOne = form.password
     const passwordTwo = form.confirmPassword
@@ -58,8 +51,6 @@ function SignUpPage() {
       alert("Por favor, confira sua senha")
     }
   }
-
-
 
   return (
     <S.Wrapper>

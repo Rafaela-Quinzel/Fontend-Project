@@ -13,8 +13,6 @@ import VisibilityIcon from '@material-ui/icons/Visibility'
 
 
 
-
-
 function LoginPage() {
     window.document.title = "SoundLab"
 

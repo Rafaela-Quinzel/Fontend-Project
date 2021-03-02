@@ -6,6 +6,7 @@ import NotFoundPage from "../screens/Error/NotFoundPage"
 import SignUpPage from "../screens/Signup/SignupPage"
 import HomePage from "../screens/Home/HomePage"
 import AddMusicsPage from '../screens/AddMusics/AddMusicsPage'
+import { Modal } from '../components/Modal/Modal'
 
 
 export default function Router() {
@@ -24,6 +25,9 @@ export default function Router() {
             </Route>
             <Route exact path="/pagina-principal">
                 <HomePage />
+            </Route>
+            <Route exact path="/detalhes/:id">
+                <Modal />
             </Route>
             <Route exact path="/adicionar-musicas">
                 <AddMusicsPage />
