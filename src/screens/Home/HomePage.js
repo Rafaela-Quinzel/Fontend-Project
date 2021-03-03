@@ -15,6 +15,7 @@ import MusicsCard from '../../components/MusicsCard/MusicsCard'
 function HomePage() {
 
     const [openModal, setOpenModal] = useState(false)
+   
 
 
     const axiosConfig = {
@@ -27,6 +28,9 @@ function HomePage() {
 
 
     const getMusics = useRequestData(`${BASE_URL}/music`, undefined, axiosConfig)
+
+    
+
 
     const handleOpenModal = () => {
         setOpenModal(!openModal)
@@ -61,32 +65,34 @@ function HomePage() {
                         <SearchAppBar />
                         <S.TitlePageContainer>
                             <S.TitlePage>Lista de Músicas</S.TitlePage>
+                            <S.AddCircleContainer>
+                                <S.AddCircleIconStyled
+                                    style={{ fontSize: 70 }}
+                                    onClick={() => goToAddMusics(history)}
+                                />
+                            </S.AddCircleContainer>
                         </S.TitlePageContainer>
 
                         {getMusics && getMusics.map((music) => {
 
                             return (
-                                <S.Wrapper>
-                                    {openModal ? (
-                                        <Modal
-                                            close={handleCloseModal}
+                                <S.MainContainer>
+                                    {!openModal ? (
+                                        <MusicsCard
+                                            music={music}
+                                            open={handleOpenModal}
                                         />
                                     ) : (
-                                            <S.MainContainer>
-                                                <MusicsCard
-                                                    music={music}
-                                                    open={handleOpenModal}
-                                                />
-                                            </S.MainContainer>
+                                            <Modal
+                                                close={handleCloseModal}
+                                            />
                                         )}
-
-                                </S.Wrapper>
+                                </S.MainContainer>
                             )
                         })}
                     </div>
                 )}
         </S.Wrapper>
-
     ) : (
             <>
                 <SearchAppBar />

@@ -15,7 +15,8 @@ function App() {
       <BrowserRouter>
           <Router exact 
             path={[
-              '/pagina-principal'
+              '/pagina-principal',
+              '/detalhes/:id'
             ]}
           >
             <SearchAppBar />

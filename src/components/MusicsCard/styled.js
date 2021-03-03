@@ -17,12 +17,12 @@ export const TextCard = styled.div`
 export const SnackBar = styled.div`
   display: grid;
   bottom: 60px;
-  width: 30vw;
-  max-width: 420px;
+  width: 20vw;
+  min-width: 250px;
   height: 110px;
   padding: 22px;
   border-radius: 10px;
   background-color: ${primaryColor};
-  margin: 2%;
+  margin: 4%;
   cursor: pointer;  
 `

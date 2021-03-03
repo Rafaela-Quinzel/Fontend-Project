@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 //Styled Modal
 export const ModalContainer = styled.div` 
-    background: rgba(242, 243, 245, 0.8);
+    background: rgba(242, 243, 245, 0.2);
     position: fixed;
     top: 0;
     bottom: 0;
@@ -27,14 +27,14 @@ export const WrapperModal = styled.div`
 ` 
 
 export const HeaderModal = styled.header` 
-    font-size: 5.75rem;
+    font-size: 3.75rem;
     font-weight: 600;
     color: var(--blue);
     background-size: contain;
 `
 
 export const TitleModal = styled.strong` 
-    font-size: 2.25rem;
+    font-size: 2.20rem;
     color: var(--title);
 `
 
@@ -51,4 +51,5 @@ export const CloseModal = styled.button`
     background: transparent;
     border: 0;
     font-size: 0;
+    cursor: pointer;
 `

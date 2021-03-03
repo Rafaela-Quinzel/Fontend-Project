@@ -1,14 +1,16 @@
 import React from 'react'
+import { useParams } from 'react-router-dom'
 import * as S from './styled'
 
 
 
 export function Modal(props) {
 
+
     return (
         <S.ModalContainer>
             <S.WrapperModal>
-                <S.HeaderModal>Titulo</S.HeaderModal>
+                <S.HeaderModal>Título</S.HeaderModal>
 
                 <S.TitleModal>Albúm</S.TitleModal>
                 <S.TextModal>Música</S.TextModal>
