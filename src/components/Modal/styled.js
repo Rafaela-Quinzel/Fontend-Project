@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 //Styled Modal
 export const ModalContainer = styled.div` 
-    background: rgba(242, 243, 245, 0.2);
+    background: rgba(242, 243, 245, 0.8);
     position: fixed;
     top: 0;
     bottom: 0;
@@ -16,7 +16,7 @@ export const ModalContainer = styled.div`
 `
 
 export const WrapperModal = styled.div` 
-    background: rgba(182, 194, 204, 0.5);
+    background: white;
     width: 100%;
     max-width: 400px;
     padding: 2rem 3rem;

@@ -26,3 +26,13 @@ export const SnackBar = styled.div`
   margin: 4%;
   cursor: pointer;  
 `
+
+export const Wrapper = styled.div`
+  width: 100vw;
+  /* max-width: 420px; */
+  margin: 0 auto;
+   display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  /* gap: 2rem; */
+  background-color: green;
+`

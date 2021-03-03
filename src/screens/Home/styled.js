@@ -6,12 +6,6 @@ import AddCircleIcon from '@material-ui/icons/AddCircle'
 // Styled HomePage //
 export const MainContainer = styled.div`
   width: 100vw;
-  /* height: 100vh; */
-  /* max-width: 420px; */
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  /* margin: 0 auto;  */
   background-color: yellow;
 `
 
