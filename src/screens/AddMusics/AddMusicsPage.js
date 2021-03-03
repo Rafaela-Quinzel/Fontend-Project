@@ -6,6 +6,7 @@ import { useForm } from '../../hooks/useForm'
 import { addMusic } from '../../services/Music'
 import { goBack } from '../../routes/coordinator'
 import { TextField, Button } from '@material-ui/core'
+import GenreToggleGroup from '../../components/GenreToggleGroup/GenreToggleGroup'
 
 
 function AddMusicsPage() {
@@ -24,6 +25,12 @@ function AddMusicsPage() {
 
     const handleToggleChange = (event, genres) => {
         setGenres(genres)
+    }
+
+    const handleInputChange = (event) => {
+        const { value, name } = event.target
+
+        onChange(value, name)
     }
 
     const onSubmitForm = (event) => {
@@ -53,7 +60,7 @@ function AddMusicsPage() {
             <S.FormConteiner onSubmit={onSubmitForm}>
                 <TextField
                     value={form.title}
-                    onChange={onChange}
+                    onChange={handleInputChange}
                     variant='outlined'
                     label='Título'
                     placeholder='título da música'
@@ -65,7 +72,7 @@ function AddMusicsPage() {
 
                 <TextField
                     value={form.author}
-                    onChange={onChange}
+                    onChange={handleInputChange}
                     variant='outlined'
                     label='Author'
                     placeholder='author da música'
@@ -77,7 +84,7 @@ function AddMusicsPage() {
 
                 <TextField
                     value={form.file}
-                    onChange={onChange}
+                    onChange={handleInputChange}
                     variant='outlined'
                     label='URL'
                     placeholder='Link da música'
@@ -89,7 +96,7 @@ function AddMusicsPage() {
 
                 <TextField
                     value={form.album}
-                    onChange={onChange}
+                    onChange={handleInputChange}
                     variant='outlined'
                     label='Albúm'
                     placeholder='nome do albúm da música'
@@ -99,10 +106,10 @@ function AddMusicsPage() {
                 />
                 <br />
 
-                <TextField
+                <GenreToggleGroup
                     value={genres}
                     onChange={handleToggleChange}
-                />
+                />  
                 <br />
 
                 <Button

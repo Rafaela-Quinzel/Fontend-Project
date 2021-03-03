@@ -28,3 +28,7 @@ export const logout = (history) => {
 export const goBack = (history) => {
     history.goBack()
 }
+
+export const goToModal = (history) => {
+    history.push('/detalhes/:id')
+}
