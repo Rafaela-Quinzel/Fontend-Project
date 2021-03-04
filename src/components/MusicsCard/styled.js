@@ -1,17 +1,13 @@
 import styled from 'styled-components'
-import { primaryColor, mainGray } from '../../constants/Colors'
+import { mainGray, mainColor } from '../../constants/Colors'
 
 
-// Styled MusicCard //
-export const TitleCard = styled.p`
-  font-weight: bold;
-  font-size: 22px;
-  color: white;
-`
 
-export const TextCard = styled.div`
-  color: ${mainGray};
-  word-break: break-all;
+export const Wrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-left: 2.2rem;
+  grid-row-gap: 2rem;
 `
 
 export const SnackBar = styled.div`
@@ -22,17 +18,27 @@ export const SnackBar = styled.div`
   height: 110px;
   padding: 22px;
   border-radius: 10px;
-  background-color: ${primaryColor};
-  margin: 4%;
-  cursor: pointer;  
+  background-color: ${mainColor};
+  cursor: pointer; 
+  &:hover{
+    transform: scale(1.1);
+    background-color: rgb(165, 13, 196);
+    transition: background-color 0.4s;
+    transition: transform 0.4s;
+  } 
 `
 
-export const Wrapper = styled.div`
-  width: 100vw;
-  /* max-width: 420px; */
-  margin: 0 auto;
-   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  /* gap: 2rem; */
-  background-color: green;
+export const TextCard = styled.div`
+  color: ${mainGray};
+  word-break: break-all;
 `
+
+export const TitleCard = styled.p`
+  font-weight: bold;
+  font-size: 22px;
+  color: white;
+`
+
+
+
+

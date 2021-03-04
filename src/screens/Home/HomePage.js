@@ -1,13 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import * as S from './styled'
-import { useHistory, useParams } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { useRequestData } from '../../hooks/useRequestData'
 import { BASE_URL, axiosConfig } from '../../constants/RequestConfig'
 import { Button } from '@material-ui/core'
 import SearchAppBar from '../../components/AppBar/AppBar'
 import LoadingInfo from '../../components/Loading/LoadingInfo'
 import { goToAddMusics } from '../../routes/coordinator'
-import { Modal } from '../../components/Modal/Modal'
 import MusicsCard from '../../components/MusicsCard/MusicsCard'
 
 
@@ -20,54 +19,57 @@ function HomePage() {
 
     return getMusics ? (
         <S.MainContainer>
-            <SearchAppBar />
-            <S.TitlePageContainer>
-                <S.TitlePage>Lista de Músicas</S.TitlePage>
-            </S.TitlePageContainer>
-            {getMusics && getMusics.map((music) => {
-                return (
-                    <MusicsCard
-                        music={music}
-                    />
-                )
-            })}
-            <S.AddCircleContainer>
-                <S.AddCircleIconStyled
-                    style={{ fontSize: 70 }}
-                    onClick={() => goToAddMusics(history)}
-                />
-            </S.AddCircleContainer>
-        </S.MainContainer>
+            <SearchAppBar wrapper="span"/>
+            {getMusics.length === 0 ? (
+                <S.MainContainer>
+                    <S.NoResultsContainer>
+                        <S.NoResults>
+                            <p>Você ainda não cadastrou músicas</p>
+                            <S.AreaButton>
+                                <Button
+                                    variant='contained'
+                                    color="secondary"
+                                    type="submit"
+                                    onClick={() => goToAddMusics(history)}
+                                >
+                                    Cadastrar músicas
+                            </Button>
+                            </S.AreaButton>
+                        </S.NoResults>
+                    </S.NoResultsContainer>
+                </S.MainContainer>
+            ) : (
+                    <S.MainContainer>
+                        <S.TitlePageContainer>
+                            <S.TitlePage>Lista de Músicas</S.TitlePage>
+                        </S.TitlePageContainer>
+                        <S.CardContainer>
+                            {getMusics && getMusics.map((music) => {
+                                return (
+                                    <MusicsCard
+                                        key={music.id}
+                                        music={music}
+                                    />
+                                )
+                            })}
+                        </S.CardContainer>
+                        <S.AddCircleContainer>
+                            <S.AddCircleIconStyled
+                                style={{ fontSize: 70 }}
+                                onClick={() => goToAddMusics(history)}
+                            />
+                        </S.AddCircleContainer>
 
+                    </S.MainContainer>
+                )}
+        </S.MainContainer>
     ) : (
             <S.MainContainer>
-                <S.NoResultsContainer>
-                    <SearchAppBar />
-                    <S.NoResults>
-                        <p>Você ainda não cadastrou músicas</p>
-                        <S.AreaButton>
-                            <Button
-                                variant='contained'
-                                color="secondary"
-                                type="submit"
-                                onClick={() => goToAddMusics(history)}
-                            >
-                                Cadastrar músicas
-                            </Button>
-                        </S.AreaButton>
-                    </S.NoResults>
-                </S.NoResultsContainer>
+                <SearchAppBar wrapper="span"/>
+                <LoadingInfo />
             </S.MainContainer>
         )
 }
-
-//     ) : (
-//     <>
-//         <SearchAppBar />
-//         <LoadingInfo />
-//     </>
-// )
-
 export default HomePage
 
 

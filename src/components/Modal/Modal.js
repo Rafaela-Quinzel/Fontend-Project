@@ -1,50 +1,54 @@
-import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import React from 'react'
 import * as S from './styled'
-
-import axios from 'axios'
-
-import { useRequestData } from '../../hooks/useRequestData'
-import { BASE_URL, axiosConfig } from '../../constants/RequestConfig'
-
+import dayjs from 'dayjs'
 
 
 export function Modal(props) {
-    // const [musicInfo, setMusicInfo] = useState({})
 
-    // const { id } = useParams()
-
-
-    // const getMusicsDetails = useRequestData(`${BASE_URL}/music/${props.music.id}`, [], axiosConfig)
-
-    // console.log(getMusicsDetails)
-
-    // const params = useParams()
-
+    const dateFormat = dayjs(props.music.date).format("DD/MM/YYYY")
 
     return (
-        <div>
-             {/* {getMusicsDetails && getMusicsDetails.map((music) => {
-                return ( */}
-                    <S.ModalContainer idMusic={props.id}>
-                        <S.WrapperModal>
-                            <S.HeaderModal>{props.title}</S.HeaderModal>
-
-                            <S.TitleModal>Albúm</S.TitleModal>
-                            <S.TextModal>Música</S.TextModal>
-
-                            <S.CloseModal type="button">
-                                <img
-                                    src="/icons/close.svg"
-                                    alt="Fechar modal"
-                                    onClick={props.close}
-                                />
-                            </S.CloseModal>
-                        </S.WrapperModal>
-
-                    </S.ModalContainer>
-                )
-            {/* })}  */}
-        </div>
+        <S.ModalContainer>
+            <S.WrapperModal>
+                <S.HeaderModal>{props.music.author}</S.HeaderModal>
+                <S.TitleModal>{props.music.title}</S.TitleModal>
+                <S.TextModal>
+                    Albúm:
+                    <br />
+                    {props.music.album}
+                </S.TextModal>
+                <S.FileContainer>
+                    <S.Audio
+                        width="800"
+                        height="240"
+                        src={props.music.file}
+                        controls
+                    />
+                </S.FileContainer>
+                <S.TextDate>
+                    postado:
+                    <br />
+                    {dateFormat}
+                </S.TextDate>
+                <S.CloseModal type="button">
+                    <img
+                        src="/icons/close.svg"
+                        alt="Fechar modal"
+                        onClick={props.close}
+                    />
+                </S.CloseModal>
+                <S.LinkFileContainer>
+                    arquivo postado:
+                    <br />
+                    <S.LinkFile
+                        href={props.music.file}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        {props.music.file}
+                    </S.LinkFile>
+                </S.LinkFileContainer>
+            </S.WrapperModal>
+        </S.ModalContainer>
     )
 }

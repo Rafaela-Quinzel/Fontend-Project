@@ -21,6 +21,7 @@ export const signUp = (body, history) => {
     axios.post(`${BASE_URL}/user/signup`, body)
         .then(response => {
             window.localStorage.setItem('token', response.data.token)
+            alert('Cadastro efetuado com sucesso!')
             goToHome(history)
         }).catch(error => {
             console.log(error.message)

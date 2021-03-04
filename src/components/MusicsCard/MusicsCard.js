@@ -1,43 +1,32 @@
 import React, { useState } from 'react'
 import * as S from './styled'
 import { Modal } from '../../components/Modal/Modal'
-import { useHistory, useParams } from 'react-router-dom'
-
-import { useRequestData } from '../../hooks/useRequestData'
-import { BASE_URL, axiosConfig } from '../../constants/RequestConfig'
 
 
 
 function MusicsCard(props) {
     const [openModal, setOpenModal] = useState(false)
-
-    const params = useParams()
-
-    const history = useHistory()
+    const [idParams, setIdParams] = useState("")
 
 
     const handleOpenModal = () => {
         setOpenModal(!openModal)
+        setIdParams(`${props.music.id}`)
     }
+
 
     const handleCloseModal = (event) => {
         event.preventDefault()
         setOpenModal(false)
     }
 
-    // const getMusicsDetails = useRequestData(`${BASE_URL}/music/${props.music.id}`, undefined, axiosConfig)
-
-    // console.log(getMusicsDetails)
-
-
-    // console.log(props.music.id)
 
     return (
         <S.Wrapper>
             { openModal ? (
                 <Modal
                     close={handleCloseModal}
-                    onClick={() => history.push(`/pagina-principal/${props.music.id}`)}
+                    music={props.music}
                 />
             ) : (
                     <S.SnackBar onClick={handleOpenModal}>
@@ -46,8 +35,6 @@ function MusicsCard(props) {
                     </S.SnackBar>
                 )}
         </S.Wrapper>
-
     )
-
 }
 export default MusicsCard

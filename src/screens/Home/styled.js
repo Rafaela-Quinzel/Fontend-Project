@@ -1,36 +1,15 @@
 import styled from 'styled-components'
-import { mainGray, secondaryColor, primaryColor } from '../../constants/Colors'
+import { secondaryColor, mainLightGray } from '../../constants/Colors'
 import AddCircleIcon from '@material-ui/icons/AddCircle'
 
 
-// Styled HomePage //
+
 export const MainContainer = styled.div`
   width: 100vw;
-  background-color: yellow;
 `
 
 export const NoResultsContainer = styled.div`
   margin: auto 0 auto;
-`
-
-export const TitlePageContainer = styled.div`
-  text-align: center;
-  margin: 4%;
-  color: ${mainGray};
-`
-
-export const TitlePage = styled.h2`
-  color: ${mainGray};
-`
-
-export const Wrapper = styled.div`
-  width: 100vw;
-  /* max-width: 420px; */
-  margin: 0 auto;
-   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  /* gap: 2rem; */
-  background-color: green;
 `
 
 export const NoResults = styled.div`
@@ -42,8 +21,19 @@ export const NoResults = styled.div`
 export const AreaButton = styled.div`
   margin: 5%;
 `
-export const AddCircleIconStyled = styled(AddCircleIcon)`
-  color: ${secondaryColor};
+
+export const TitlePageContainer = styled.div`
+  text-align: center;
+  margin: 5%;
+`
+
+export const TitlePage = styled.h2`
+  color: ${mainLightGray};
+`
+export const CardContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
 `
 
 export const AddCircleContainer = styled.div`
@@ -52,6 +42,12 @@ export const AddCircleContainer = styled.div`
   bottom: 20px;
   cursor: pointer;
 `
+
+export const AddCircleIconStyled = styled(AddCircleIcon)`
+  color: ${secondaryColor};
+`
+
+
 
 
 
