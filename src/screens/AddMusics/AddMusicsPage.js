@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import * as S from './styled'
 import logo from '../../assets/logo.svg'
 import { useHistory } from 'react-router-dom'
@@ -6,26 +6,21 @@ import { useForm } from '../../hooks/useForm'
 import { addMusic } from '../../services/Music'
 import { goBack } from '../../routes/coordinator'
 import { TextField, Button } from '@material-ui/core'
-import GenreToggleGroup from '../../components/GenreToggleGroup/GenreToggleGroup'
+
 
 
 function AddMusicsPage() {
-
-    const [genres, setGenres] = useState([])
 
     const { form, onChange } = useForm({
         title: "",
         author: "",
         file: "",
-        album: ""
+        album: "", 
+        genre: ""
     })
 
     const history = useHistory()
 
-
-    const handleToggleChange = (event, genres) => {
-        setGenres(genres)
-    }
 
     const handleInputChange = (event) => {
         const { value, name } = event.target
@@ -33,21 +28,26 @@ function AddMusicsPage() {
         onChange(value, name)
     }
 
-    const onSubmitForm = (event) => {
+    const sendGenre = (event) => {
         event.preventDefault()
 
+        let genre = form.genre.split(" ")
+        let i
+        for(i = 0; i < genre.length; i++) {
+            genre[i] = genre[i].replace("#", "")
+        }
+
         const body = {
-            title: form.title,
-            author: form.author,
-            file: form.file,
-            genres,
-            album: form.album
+            "title": form.title,
+            "author": form.author,
+            "file": form.file,
+            "album": form.album,
+            "genre": genre 
         }
 
         addMusic(body, history)
+
     }
-
-
 
     return (
         <S.Wrapper>
@@ -57,7 +57,7 @@ function AddMusicsPage() {
             </S.AreaLogo>
             <S.TitlePage>Adcionar música</S.TitlePage>
 
-            <S.FormConteiner onSubmit={onSubmitForm}>
+            <S.FormConteiner onSubmit={sendGenre}>
                 <TextField
                     value={form.title}
                     onChange={handleInputChange}
@@ -67,6 +67,7 @@ function AddMusicsPage() {
                     name='title'
                     type='text'
                     required
+                    inputProps={{ maxLength: 35 }}
                 />
                 <br />
 
@@ -79,6 +80,7 @@ function AddMusicsPage() {
                     name='author'
                     type='text'
                     required
+                    inputProps={{ maxLength: 20 }}
                 />
                 <br />
 
@@ -103,13 +105,21 @@ function AddMusicsPage() {
                     name='album'
                     type='text'
                     required
+                    inputProps={{ maxLength: 20 }}
                 />
                 <br />
 
-                <GenreToggleGroup
-                    value={genres}
-                    onChange={handleToggleChange}
-                />  
+                <TextField
+                    value={form.genre}
+                    onChange={handleInputChange}
+                    variant='outlined'
+                    label='Gênero'
+                    placeholder='gênero da música'
+                    name='genre'
+                    type='text'
+                    required
+                    inputProps={{ maxLength: 30 }}
+                />
                 <br />
 
                 <Button

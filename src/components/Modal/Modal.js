@@ -17,10 +17,16 @@ export function Modal(props) {
                     <br />
                     {props.music.album}
                 </S.TextModal>
+                <S.TextModal>
+                Gênero(s):
+                {props.music.genre.map((genre) => {
+                    return (
+                      <p>{genre}</p>
+                    )
+                })}
+                </S.TextModal>
                 <S.FileContainer>
                     <S.Audio
-                        width="800"
-                        height="240"
                         src={props.music.file}
                         controls
                     />
