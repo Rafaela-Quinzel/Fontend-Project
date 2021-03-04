@@ -9,6 +9,8 @@ export const mainColor = '#BD10E0'
 
 export const mainGray =  '#313131'
 
+export const mainLightGray = '#4b4a4d'
+
 export const mainWhite = '#FFFFFF'
 
 export const mainRed = 'red'
