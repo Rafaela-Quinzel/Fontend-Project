@@ -6,6 +6,7 @@ import { useForm } from '../../hooks/useForm'
 import { addMusic } from '../../services/Music'
 import { goBack } from '../../routes/coordinator'
 import { TextField, Button } from '@material-ui/core'
+import { useProtectPage } from '../../hooks/useProtectPage'
 
 
 
@@ -15,12 +16,13 @@ function AddMusicsPage() {
         title: "",
         author: "",
         file: "",
-        album: "", 
+        album: "",
         genre: ""
     })
 
     const history = useHistory()
 
+    useProtectPage()
 
     const handleInputChange = (event) => {
         const { value, name } = event.target
@@ -33,16 +35,16 @@ function AddMusicsPage() {
 
         let genre = form.genre.split(" ")
         let i
-        for(i = 0; i < genre.length; i++) {
+        for (i = 0; i < genre.length; i++) {
             genre[i] = genre[i].replace("#", "")
         }
 
         const body = {
-            "title": form.title,
-            "author": form.author,
-            "file": form.file,
-            "album": form.album,
-            "genre": genre 
+            title: form.title,
+            author: form.author,
+            file: form.file,
+            album: form.album,
+            genre: genre
         }
 
         addMusic(body, history)
@@ -51,10 +53,7 @@ function AddMusicsPage() {
 
     return (
         <S.Wrapper>
-            <S.ArrowBackIosIconStyled onClick={() => goBack(history)} />
-            <S.AreaLogo>
                 <S.Logo src={logo} />
-            </S.AreaLogo>
             <S.TitlePage>Adcionar música</S.TitlePage>
 
             <S.FormConteiner onSubmit={sendGenre}>
@@ -129,6 +128,15 @@ function AddMusicsPage() {
                 >
                     ADICIONAR
                 </Button>
+                <S.AreaButton>
+                    <Button
+                        variant="outlined"
+                        color="primary"
+                        onClick={() => goBack(history)}
+                    >
+                        VOLTAR
+                    </Button>
+                </S.AreaButton>
             </S.FormConteiner>
         </S.Wrapper>
     )

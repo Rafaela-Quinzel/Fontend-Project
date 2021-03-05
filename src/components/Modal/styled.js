@@ -4,9 +4,10 @@ import {
     mainLightGray,
     secondaryColor
 } from '../../constants/Colors'
+import DeleteIcon from '@material-ui/icons/Delete'
 
 
-//Styled Modal
+
 export const ModalContainer = styled.div` 
     background: rgba(242, 243, 245, 0.8);
     position: fixed;
@@ -14,11 +15,11 @@ export const ModalContainer = styled.div`
     bottom: 0;
     left: 0;
     right: 0;
+   
 
     display: flex;
     justify-content: center;
     align-items: center;
-    text-transform: capitalize;
 `
 
 export const WrapperModal = styled.div`
@@ -37,14 +38,15 @@ export const HeaderModal = styled.header`
     font-size: 1.6rem;
     font-weight: 500;
     color: ${primaryColor};
-    background-size: contain; 
+    background-size: contain;
+    text-transform: capitalize; 
 `
 
 export const TitleModal = styled.strong` 
     font-size: 1.4rem;
     color: ${mainLightGray};
     margin-top: 1rem;
-    
+    text-transform: capitalize;    
 `
 
 export const TextModal = styled.strong` 
@@ -56,8 +58,8 @@ export const TextModal = styled.strong`
 export const FileContainer = styled.div`
     font-size: 0.8rem;
     margin: 2% 4% 2% 0;
-    border: solid 3px ${secondaryColor};
-    border-radius: 100px;
+    /* border: solid 3px ${secondaryColor};
+    border-radius: 100px; */
     display: flex;
     align-self: center;
 `;
@@ -75,6 +77,7 @@ export const TextDate = styled.p`
 `
 
 export const CloseModal = styled.button` 
+    color: ${mainLightGray};
     position: absolute;
     right: 0.5rem;
     top: 0.5rem;
@@ -95,3 +98,14 @@ export const LinkFile = styled.a`
     margin: 8% 4% 0 0;
     text-decoration: none;
 `;
+
+export const DeleteIconStyled = styled(DeleteIcon)`
+    color: ${mainLightGray};
+    width: 15px;
+    position: absolute;
+    top: 0.8rem;
+    left: 0.8rem;
+    border: 0;
+    font-size: 0;
+    cursor: pointer;
+`

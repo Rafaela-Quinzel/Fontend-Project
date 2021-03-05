@@ -5,36 +5,43 @@ import { useHistory } from 'react-router-dom'
 import { useForm } from '../../hooks/useForm'
 import { signUp } from '../../services/User'
 import { goBack } from '../../routes/coordinator'
+
 import { Visibility, VisibilityOff } from "@material-ui/icons"
-import { InputLabel, IconButton, InputAdornment, OutlinedInput, FormControl, TextField, Button } from '@material-ui/core'
-
-
+import {
+  InputLabel,
+  IconButton,
+  InputAdornment,
+  OutlinedInput,
+  FormControl,
+  TextField,
+  Button
+} from '@material-ui/core'
 
 
 function SignUpPage() {
   const [showPassword, setShowPassword] = React.useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = React.useState(false)
-  
 
-  const {form, onChange} = useForm({
+
+  const { form, onChange } = useForm({
     name: "",
     email: "",
     nickname: "",
-    password: "", 
-    confirmPassword: "" 
+    password: "",
+    confirmPassword: ""
   })
 
   const history = useHistory()
-  
+
   const handleInputChange = (event) => {
-    const {value, name} = event.target
+    const { value, name } = event.target
 
     onChange(value, name)
-   
+
   }
 
   const handleShowPassword = () => {
-     setShowPassword(!showPassword)
+    setShowPassword(!showPassword)
   }
 
   const handleShowConfirmPassword = () => {
@@ -54,16 +61,12 @@ function SignUpPage() {
 
   return (
     <S.Wrapper>
-      <S.ArrowBackIosIconStyled onClick={() => goBack(history)}/>
-      <S.AreaLogo>
       <S.Logo src={logo} />
-      </S.AreaLogo>
-      <S.TitlePage>Cadastrar</S.TitlePage>
-        
-      <S.FormConteiner onSubmit={validate}>
+      <S.TitlePage>Fazer cadastro</S.TitlePage>
 
-        <TextField 
-          value={form.name} 
+      <S.FormConteiner onSubmit={validate}>
+        <TextField
+          value={form.name}
           onChange={handleInputChange}
           variant='outlined'
           label='Nome'
@@ -74,7 +77,7 @@ function SignUpPage() {
         />
         <br />
 
-        <TextField 
+        <TextField
           value={form.email}
           onChange={handleInputChange}
           variant='outlined'
@@ -87,8 +90,8 @@ function SignUpPage() {
         />
         <br />
 
-        <TextField 
-          value={form.nickname} 
+        <TextField
+          value={form.nickname}
           onChange={handleInputChange}
           variant='outlined'
           label='Apelido'
@@ -97,59 +100,94 @@ function SignUpPage() {
           type='text'
           required
         />
-        <br/>
+        <br />
 
         <FormControl variant="outlined" required="true">
-          <InputLabel htmlFor="outlined-adornment-password" margin="dense">Senha</InputLabel>
-            <OutlinedInput
-              label="Senha"
-              value={form.password}
-              type={showPassword ? "text" : "password"}
-              name="password"
-              placeholder="Mínimo 6 caracteres"
-              onChange={handleInputChange}
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    onClick={handleShowPassword}
-                    edge="end"
-                  >
-                    {showPassword ? <Visibility fontSize={'small'}/> : <VisibilityOff fontSize={'small'}/>}
-                  </IconButton>
-                </InputAdornment>
-              }
-            />
+          <InputLabel
+            htmlFor="outlined-adornment-password"
+            margin="dense"
+          >
+            Senha
+          </InputLabel>
+          <OutlinedInput
+            label="Senha"
+            value={form.password}
+            type={showPassword ? "text" : "password"}
+            name="password"
+            placeholder="Mínimo 6 caracteres"
+            onChange={handleInputChange}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  onClick={handleShowPassword}
+                  edge="end"
+                >
+                  {showPassword ?
+                    <Visibility
+                      fontSize={'small'}
+                    />
+                    :
+                    <VisibilityOff
+                      fontSize={'small'}
+                    />
+                  }
+                </IconButton>
+              </InputAdornment>
+            }
+          />
         </FormControl>
-        <br/>
-        <FormControl variant="outlined" required="true" style={{ margin: '2px 0'}}>
-          <InputLabel htmlFor="outlined-adornment-password" margin="dense">Confirmar</InputLabel>
-            <OutlinedInput
-              label="Confirmar"
-              value={form.confirmPassword}
-              type={showConfirmPassword ? "text" : "password"}
-              name="confirmPassword"
-              placeholder="Confirme a senha"
-              onChange={handleInputChange}
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    onClick={handleShowConfirmPassword}
-                    edge="end"
-                  >
-                    {showConfirmPassword ? <Visibility fontSize={'small'}/> : <VisibilityOff fontSize={'small'}/>}
-                  </IconButton>
-                </InputAdornment>
-              }
-            />
-          </FormControl>
-        <br/>
+        <br />
+        <FormControl variant="outlined" required="true" style={{ margin: '2px 0' }}>
+          <InputLabel
+            htmlFor="outlined-adornment-password"
+            margin="dense"
+          >
+            Confirmar
+          </InputLabel>
+          <OutlinedInput
+            label="Confirmar"
+            value={form.confirmPassword}
+            type={showConfirmPassword ? "text" : "password"}
+            name="confirmPassword"
+            placeholder="Confirme a senha"
+            onChange={handleInputChange}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  onClick={handleShowConfirmPassword}
+                  edge="end"
+                >
+                  {showConfirmPassword ?
+                    <Visibility
+                      fontSize={'small'}
+                    />
+                    :
+                    <VisibilityOff
+                      fontSize={'small'}
+                    />
+                  }
+                </IconButton>
+              </InputAdornment>
+            }
+          />
+        </FormControl>
+        <br />
         <Button
           variant='contained'
           color="primary"
           type="submit"
         >
-          CRIAR
+          CADASTRAR
         </Button>
+        <S.AreaButton>
+          <Button
+            variant="outlined"
+            color="primary"
+            onClick={() => goBack(history)}
+          >
+            VOLTAR
+          </Button>
+        </S.AreaButton>
       </S.FormConteiner>
     </S.Wrapper>
   )

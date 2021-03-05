@@ -4,6 +4,7 @@ import { mainGray, mainColor } from '../../constants/Colors'
 
 
 export const Wrapper = styled.div`
+
 `
 
 export const SnackBar = styled.div`

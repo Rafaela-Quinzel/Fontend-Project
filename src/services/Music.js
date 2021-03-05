@@ -12,3 +12,22 @@ export const addMusic = (body, history) => {
             console.log(error.message)
         })
 }
+
+export const removeMusic = (id, history) => {
+    if (window.confirm("Deseja apagar esta música?")){
+        axios.delete(`${BASE_URL}/music/del/${id}`,
+        {
+            headers: {
+                Authorization: localStorage.getItem("token")
+            }
+        })
+        .then(response =>{
+            alert("Música removida")
+            goToHome(history)
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+    }
+
+}

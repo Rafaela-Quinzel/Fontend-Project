@@ -21,6 +21,8 @@ function MusicsCard(props) {
     }
 
 
+
+
     return (
         <S.Wrapper>
             { openModal ? (
@@ -30,7 +32,7 @@ function MusicsCard(props) {
                 />
             ) : (
                     <S.SnackBar onClick={handleOpenModal}>
-                        <S.TextCard>{props.music.title}</S.TextCard>
+                        <S.TextCard >{props.music.title}</S.TextCard>
                         <S.TitleCard>{props.music.author}</S.TitleCard>
                     </S.SnackBar>
                 )}

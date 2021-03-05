@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import * as S from './styled'
 import { useHistory } from 'react-router-dom'
 import logo from '../../assets/logo.svg'
@@ -7,17 +7,22 @@ import { useProtectPage } from '../../hooks/useProtectPage'
 import useUnProtectedPage from '../../hooks/useUnProtectedPage'
 import { login } from '../../services/User'
 import { goToSignUp } from '../../routes/coordinator'
-import { TextField, Button } from '@material-ui/core'
-import VisibilityOffIcon from '@material-ui/icons/VisibilityOff'
-import VisibilityIcon from '@material-ui/icons/Visibility'
+import { Visibility, VisibilityOff } from "@material-ui/icons"
 
+import {
+    TextField,
+    Button,
+    InputLabel,
+    IconButton,
+    InputAdornment,
+    OutlinedInput,
+    FormControl
+} from '@material-ui/core'
 
 
 function LoginPage() {
-    window.document.title = "SoundLab"
-
-    const [showPassword, setShowPassword] = React.useState(false)
-
+    
+    const [showPassword, setShowPassword] = useState(false)
 
     const { form, onChange } = useForm({
         email: "",
@@ -26,8 +31,8 @@ function LoginPage() {
 
     useProtectPage()
     useUnProtectedPage()
-    const history = useHistory()
 
+    const history = useHistory()
 
     const handleInputChange = (event) => {
         const { value, name } = event.target
@@ -35,13 +40,10 @@ function LoginPage() {
         onChange(value, name)
     }
 
-
     const handleSubmit = (event) => {
         event.preventDefault()
         login(form, history)
     }
-
-
 
     const handleShowPassword = () => {
         if (showPassword) {
@@ -50,7 +52,6 @@ function LoginPage() {
             setShowPassword(true)
         }
     }
-
 
 
     return (
@@ -69,31 +70,38 @@ function LoginPage() {
                     required
                 />
                 <br />
-                <TextField
-                    value={form.password}
-                    onChange={handleInputChange}
-                    variant='outlined'
-                    label='Senha'
-                    placeholder='Mínimo 6 caracteres'
-                    minlength="6"
-                    name='password'
-                    required
-                    type={showPassword ? 'text' : 'password'}
-                    InputProps={{
-                        endAdornment: (
-                            showPassword ? (
-                                <VisibilityIcon
+                <FormControl variant="outlined" required="true">
+                    <InputLabel
+                        htmlFor="outlined-adornment-password"
+                        margin="dense"
+                    >
+                        Senha
+                    </InputLabel>
+                    <OutlinedInput
+                        label="Senha"
+                        value={form.password}
+                        type={showPassword ? "text" : "password"}
+                        name="password"
+                        placeholder="Mínimo 6 caracteres"
+                        onChange={handleInputChange}
+                        endAdornment={
+                            <InputAdornment position="end">
+                                <IconButton
                                     onClick={handleShowPassword}
-                                    fontSize={'small'}
-                                />) : (
-                                    <VisibilityOffIcon
-                                        onClick={handleShowPassword}
-                                        fontSize={'small'}
-                                    />
-                                )
-                        ),
-                    }}
-                />
+                                    edge="end"
+                                >
+                                    {showPassword ?
+                                        <Visibility
+                                            fontSize={'small'}
+                                        /> :
+                                        <VisibilityOff
+                                            fontSize={'small'}
+                                        />}
+                                </IconButton>
+                            </InputAdornment>
+                        }
+                    />
+                </FormControl>
                 <S.AreaButton>
                     <Button
                         variant='contained'
@@ -101,14 +109,14 @@ function LoginPage() {
                         type="submit"
                     >
                         LOGIN
-          </Button>
+                    </Button>
                     <Button
                         color="primary"
                         onClick={() => goToSignUp(history)}
                     >
                         Não possui cadastro?
                         Clique aqui.
-          </Button>
+                    </Button>
                 </S.AreaButton>
             </S.FormInputsLogin>
         </S.Wrapper>

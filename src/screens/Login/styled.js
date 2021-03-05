@@ -1,8 +1,6 @@
 import styled from "styled-components"
 
 
-
-//Styled Login
 export const Wrapper = styled.div` 
   width: 100%;
   max-width: 420px;
@@ -12,8 +10,12 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-` 
+`
 
+export const Logo = styled.img`
+  width: 250px;
+  margin: 5%;
+`
 
 export const FormInputsLogin = styled.form`
   display:flex;
@@ -24,7 +26,6 @@ export const FormInputsLogin = styled.form`
   margin: 4% 10% 5% 15%;
 `
 
-
 export const AreaButton = styled.div`
   display: flex;
   flex-direction: column;
@@ -32,7 +33,3 @@ export const AreaButton = styled.div`
   margin: 20px 0 20px;
 `
 
-export const Logo = styled.img`
-  width: 250px;
-  margin: 5%;
-`
