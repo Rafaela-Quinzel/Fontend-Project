@@ -5,15 +5,15 @@ import { goToHome } from '../routes/coordinator'
 
 
 export const login = (body, history) => {
+    axios.post(`${BASE_URL}/user/login`, body)
+        .then((response) => {
+            localStorage.setItem("token", response.data.token)
+            goToHome(history)
 
-    axios.post(`${BASE_URL}/user/login`, body).then((response) => {
-        localStorage.setItem("token", response.data.token)
-        goToHome(history)
-
-    }).catch(error => {
-        alert('E-mail ou senha inválidos!')
-        console.log(error.message)
-    })
+        }).catch(error => {
+            alert('E-mail ou senha inválidos!')
+            console.log(error.message)
+        })
 }
 
 

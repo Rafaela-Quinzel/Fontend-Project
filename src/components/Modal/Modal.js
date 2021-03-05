@@ -1,6 +1,8 @@
-import React from 'react'
+import React  from 'react'
 import * as S from './styled'
 import dayjs from 'dayjs'
+import { removeMusic } from '../../services/Music'
+
 
 
 export function Modal(props) {
@@ -10,6 +12,7 @@ export function Modal(props) {
     return (
         <S.ModalContainer>
             <S.WrapperModal>
+            <S.DeleteIconStyled onClick={() => removeMusic(props.music.id)}/>
                 <S.HeaderModal>{props.music.author}</S.HeaderModal>
                 <S.TitleModal>{props.music.title}</S.TitleModal>
                 <S.TextModal>
@@ -17,13 +20,19 @@ export function Modal(props) {
                     <br />
                     {props.music.album}
                 </S.TextModal>
+                <S.TextModal>
+                Gênero(s):
+                {props.music.genre.map((genre) => {
+                    return (
+                      <p>{genre}</p>
+                    )
+                })}
+                </S.TextModal>
                 <S.FileContainer>
                     <S.Audio
-                        width="800"
-                        height="240"
                         src={props.music.file}
                         controls
-                    />
+                    /> 
                 </S.FileContainer>
                 <S.TextDate>
                     postado:

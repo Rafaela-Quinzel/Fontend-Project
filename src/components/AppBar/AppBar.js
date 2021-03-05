@@ -10,8 +10,6 @@ import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew'
 import { logout } from '../../routes/coordinator'
 
 
-
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,

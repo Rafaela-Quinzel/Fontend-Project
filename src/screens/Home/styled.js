@@ -33,7 +33,8 @@ export const TitlePage = styled.h2`
 export const CardContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  justify-items: center;
+  padding-left: 4%;
+  grid-row-gap: 3.4rem;
 `
 
 export const AddCircleContainer = styled.div`
