@@ -6,21 +6,26 @@ export const goToLogin = (history) => {
     history.push('/login')
 }
 
-export const goToSignUp =(history)=>{
+export const goToSignUp = (history) => {
     history.push('/cadastro')
 }
 
-export const goToHome =(history)=> {
+export const goToHome = (history) => {
     history.push('/pagina-principal')
 }
 
-export const goToAddMusics =(history)=> {
+export const goToMusicsFeed = (history) => {
+    history.push('/playlist-musicas')
+}
+
+export const goToAddMusics = (history) => {
     history.push('/adicionar-musicas')
 }
 
 export const logout = (history) => {
     if (window.confirm('Você tem certeza que deseja sair :( ?')) {
-        localStorage.removeItem('token')
+        localStorage.removeItem("accessToken")
+        localStorage.removeItem("username")
         history.push('/login')
     }
 }

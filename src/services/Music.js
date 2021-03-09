@@ -3,6 +3,7 @@ import { BASE_URL, axiosConfig } from '../constants/RequestConfig'
 import { goToHome } from '../routes/coordinator'
 
 
+
 export const addMusic = (body, history) => {
     axios.post(`${BASE_URL}/music/create`, body, axiosConfig)
         .then(response => {
@@ -15,18 +16,13 @@ export const addMusic = (body, history) => {
 
 export const removeMusic = (id, history) => {
     if (window.confirm("Deseja apagar esta música?")){
-        axios.delete(`${BASE_URL}/music/del/${id}`,
-        {
-            headers: {
-                Authorization: localStorage.getItem("token")
-            }
-        })
-        .then(response =>{
+        axios.delete(`${BASE_URL}/music/delete/${id}`, axiosConfig)
+        .then(response => {
             alert("Música removida")
             goToHome(history)
         })
-        .catch((err)=>{
-            console.log(err)
+        .catch((error)=>{
+            console.log(error.message)
         })
     }
 
