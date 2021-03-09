@@ -9,7 +9,7 @@ export const useProtectPage = () => {
 
   useEffect(() => {
 
-    const token = localStorage.getItem("token")
+    const token = localStorage.getItem("accessToken")
 
     if (!token) {
       goToLogin(history)

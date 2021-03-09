@@ -21,8 +21,6 @@ function MusicsCard(props) {
     }
 
 
-
-
     return (
         <S.Wrapper>
             { openModal ? (

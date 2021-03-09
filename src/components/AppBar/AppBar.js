@@ -10,12 +10,15 @@ import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew'
 import { logout } from '../../routes/coordinator'
 
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    width: '100%'
   },
   powerIcon: {
     cursor: 'pointer',
+    marginLeft: 30,
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -23,7 +26,16 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
     display: '',
-    width: '50%',
+    width: '1%',
+    marginLeft: 0,
+    [theme.breakpoints.up('sm')]: {
+      display: 'block',
+    },
+  },
+  titleNameUser: {
+    flexGrow: 1,
+    display: '',
+    width: '74%',
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },
@@ -65,7 +77,7 @@ const useStyles = makeStyles((theme) => ({
       '&:focus': {
         width: '20ch',
       },
-      
+
     },
   },
 }))
@@ -76,14 +88,12 @@ export default function SearchAppBar() {
   const history = useHistory()
   const classes = useStyles()
 
+  const username = window.localStorage.getItem("username")
+
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <PowerSettingsNewIcon className={classes.powerIcon} onClick={() => logout(history)}/>
-          <Typography className={classes.title} noWrap>
-            Logout
-          </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
@@ -97,6 +107,28 @@ export default function SearchAppBar() {
               inputProps={{ 'aria-label': 'search' }}
             />
           </div>
+
+          <Typography
+            className={classes.titleNameUser}
+            align={'right'}
+            variant="h6"
+            noWrap
+          >
+            Olá {username}!
+          </Typography>
+
+          <PowerSettingsNewIcon
+            className={classes.powerIcon}
+            onClick={() => logout(history)}
+            fontSize={'small'}
+            align={'right'} />
+          <Typography
+            className={classes.title}
+            align={'right'}
+            noWrap >
+            Logout
+          </Typography>
+
         </Toolbar>
       </AppBar>
     </div>

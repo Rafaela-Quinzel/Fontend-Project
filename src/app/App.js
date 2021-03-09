@@ -7,8 +7,10 @@ import SearchAppBar from '../components/AppBar/AppBar'
 import '../styles/global.css'
 
 
+
 function App() {
   window.document.title = "SoundLab"
+
 
   return (
     <ThemeProvider theme={theme}>
@@ -16,14 +18,14 @@ function App() {
         <Router exact
           path={[
             '/pagina-principal',
+            '/playlist-musicas',
             '/detalhes/:id'
           ]}
         >
-          <SearchAppBar />
+          <SearchAppBar text={'text'}/>
         </Router>
       </BrowserRouter>
     </ThemeProvider>
   )
 }
-
 export default App

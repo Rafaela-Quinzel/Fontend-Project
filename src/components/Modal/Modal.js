@@ -9,6 +9,7 @@ export function Modal(props) {
 
     const dateFormat = dayjs(props.music.date).format("DD/MM/YYYY")
 
+
     return (
         <S.ModalContainer>
             <S.WrapperModal>

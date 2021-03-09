@@ -7,28 +7,26 @@ import { Button } from '@material-ui/core'
 import SearchAppBar from '../../components/AppBar/AppBar'
 import LoadingInfo from '../../components/Loading/LoadingInfo'
 import { goToAddMusics } from '../../routes/coordinator'
-import PlaylistCard from '../../components/PlaylistCard/PlaylistCard'
+import MusicsCard from '../../components/MusicsCard/MusicsCard'
 
 
 
 
-function HomePage() {
+function MusicFeedPage() {
 
     const history = useHistory()
 
-    const getPlaylists = useRequestData(`${BASE_URL}/playlist`, undefined, axiosConfig)
-
-    console.log(getPlaylists)
+    const getMusics = useRequestData(`${BASE_URL}/music`, undefined, axiosConfig)
 
 
-    return getPlaylists ? (
+    return getMusics ? (
         <S.MainContainer>
             <SearchAppBar wrapper="span"/>
-            {getPlaylists.length === 0 ? (
+            {getMusics.length === 0 ? (
                 <S.MainContainer>
                     <S.NoResultsContainer>
                         <S.NoResults>
-                            <p>Você ainda não tem Playlists</p>
+                            <p>Você ainda não cadastrou músicas</p>
                             <S.AreaButton>
                                 <Button
                                     variant='contained'
@@ -36,7 +34,7 @@ function HomePage() {
                                     type="submit"
                                     onClick={() => goToAddMusics(history)}
                                 >
-                                    Cadastrar Playlist
+                                    Cadastrar músicas
                             </Button>
                             </S.AreaButton>
                         </S.NoResults>
@@ -45,14 +43,14 @@ function HomePage() {
             ) : (
                     <S.MainContainer>
                         <S.TitlePageContainer>
-                            <S.TitlePage>Lista de Playlists</S.TitlePage>
+                            <S.TitlePage>Lista de Músicas</S.TitlePage>
                         </S.TitlePageContainer>
                         <S.CardContainer>
-                            {getPlaylists && getPlaylists.map((playlist) => {
+                            {getMusics && getMusics.map((music) => {
                                 return (
-                                    <PlaylistCard
-                                        key={playlist.id}
-                                        playlist={playlist}
+                                    <MusicsCard
+                                        key={music.id}
+                                        music={music}
                                     />
                                 )
                             })}
@@ -74,7 +72,7 @@ function HomePage() {
             </S.MainContainer>
         )
 }
-export default HomePage
+export default MusicFeedPage
 
 
 

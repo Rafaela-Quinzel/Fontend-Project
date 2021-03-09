@@ -6,6 +6,8 @@ import NotFoundPage from "../screens/Error/NotFoundPage"
 import SignUpPage from "../screens/Signup/SignupPage"
 import HomePage from "../screens/Home/HomePage"
 import AddMusicsPage from '../screens/AddMusics/AddMusicsPage'
+import MusicFeedPage from '../screens/MusicFeed/MusicFeedPage'
+import PlaylistDetailsPage from '../screens/PlaylistDetailsPage/PlaylistDetailsPage'
 
 
 
@@ -25,6 +27,9 @@ export default function Router() {
             </Route>
             <Route exact path="/pagina-principal">
                 <HomePage />
+            </Route>
+            <Route exact path="/playlist-musicas">
+                <MusicFeedPage />
             </Route>
             <Route exact path="/adicionar-musicas">
                 <AddMusicsPage />

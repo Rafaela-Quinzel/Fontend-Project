@@ -6,7 +6,8 @@ import { goToHome } from '../routes/coordinator'
 export default function useUnProtectedPage() {
 
     const history = useHistory()
-    const token = localStorage.getItem("token")
+    
+    const token = localStorage.getItem("accessToken")
 
     useEffect(() => {
         if (token) {
