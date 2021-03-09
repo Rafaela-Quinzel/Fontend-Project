@@ -23,7 +23,7 @@ function HomePage() {
 
     return getPlaylists ? (
         <S.MainContainer>
-            <SearchAppBar wrapper="span"/>
+            <SearchAppBar wrapper="span" />
             {getPlaylists.length === 0 ? (
                 <S.MainContainer>
                     <S.NoResultsContainer>
@@ -43,36 +43,37 @@ function HomePage() {
                     </S.NoResultsContainer>
                 </S.MainContainer>
             ) : (
-                    <S.MainContainer>
-                        <S.TitlePageContainer>
-                            <S.TitlePage>Lista de Playlists</S.TitlePage>
-                        </S.TitlePageContainer>
-                        <S.CardContainer>
-                            {getPlaylists && getPlaylists.map((playlist) => {
-                                return (
-                                    <PlaylistCard
-                                        key={playlist.id}
-                                        playlist={playlist}
-                                    />
-                                )
-                            })}
-                        </S.CardContainer>
-                        <S.AddCircleContainer>
-                            <S.AddCircleIconStyled
-                                style={{ fontSize: 70 }}
-                                onClick={() => goToAddMusics(history)}
-                            />
-                        </S.AddCircleContainer>
+                <S.MainContainer>
+                    <S.TitlePageContainer>
+                        <S.TitlePage>Lista de Playlists</S.TitlePage>
+                    </S.TitlePageContainer>
+                    <S.CardContainer>
+                        {getPlaylists && getPlaylists.map((playlist) => {
+                            return (
+                                <PlaylistCard
+                                    key={playlist.id}
+                                   playlist={playlist}
+                                   
+                                />
+                            )
+                        })}
+                    </S.CardContainer>
+                    <S.AddCircleContainer>
+                        <S.AddCircleIconStyled
+                            style={{ fontSize: 70 }}
+                            onClick={() => goToAddMusics(history)}
+                        />
+                    </S.AddCircleContainer>
 
-                    </S.MainContainer>
-                )}
+                </S.MainContainer>
+            )}
         </S.MainContainer>
     ) : (
-            <S.MainContainer>
-                <SearchAppBar wrapper="span"/>
-                <LoadingInfo />
-            </S.MainContainer>
-        )
+        <S.MainContainer>
+            <SearchAppBar wrapper="span" />
+            <LoadingInfo />
+        </S.MainContainer>
+    )
 }
 export default HomePage
 

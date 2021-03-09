@@ -14,6 +14,10 @@ export const goToHome = (history) => {
     history.push('/pagina-principal')
 }
 
+export const goToPlaylistDetails = (history, id) => {
+    history.push(`/playlist-detalhes/${id}`)
+}
+
 export const goToMusicsFeed = (history) => {
     history.push('/playlist-musicas')
 }

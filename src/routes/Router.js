@@ -28,6 +28,9 @@ export default function Router() {
             <Route exact path="/pagina-principal">
                 <HomePage />
             </Route>
+            <Route exact path="/playlist-detalhes/:id">
+                <PlaylistDetailsPage />
+            </Route>
             <Route exact path="/playlist-musicas">
                 <MusicFeedPage />
             </Route>
