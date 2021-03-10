@@ -22,10 +22,6 @@ export const goToMusicsFeed = (history) => {
     history.push('/playlist-musicas')
 }
 
-export const goToAddMusics = (history) => {
-    history.push('/adicionar-musicas')
-}
-
 export const logout = (history) => {
     if (window.confirm('Você tem certeza que deseja sair :( ?')) {
         localStorage.removeItem("accessToken")

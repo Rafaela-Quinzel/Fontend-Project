@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import * as S from './styled'
-import { Modal } from '../../components/Modal/Modal'
+import { MusicModal } from '../MusicModal/MusicModal'
 
 
 
@@ -16,15 +16,14 @@ function MusicsCard(props) {
 
 
     const handleCloseModal = (event) => {
-        event.preventDefault()
         setOpenModal(false)
     }
 
-
+ 
     return (
         <S.Wrapper>
             { openModal ? (
-                <Modal
+                <MusicModal
                     close={handleCloseModal}
                     music={props.music}
                 />

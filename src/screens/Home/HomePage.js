@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import * as S from './styled'
 import { useHistory } from 'react-router-dom'
 import { useRequestData } from '../../hooks/useRequestData'
@@ -6,13 +6,24 @@ import { BASE_URL, axiosConfig } from '../../constants/RequestConfig'
 import { Button } from '@material-ui/core'
 import SearchAppBar from '../../components/AppBar/AppBar'
 import LoadingInfo from '../../components/Loading/LoadingInfo'
-import { goToAddMusics } from '../../routes/coordinator'
+import { goToAddMusics, goBack } from '../../routes/coordinator'
 import PlaylistCard from '../../components/PlaylistCard/PlaylistCard'
+import { PlaylistModal } from '../../components/PlaylistModal/PlaylistModal'
 
 
 
 
 function HomePage() {
+    const [openModal, setOpenModal] = useState(false)
+
+    const handleOpenModal = () => {
+        setOpenModal(!openModal)
+    }
+
+    const handleCloseModal = (event) => {
+        event.preventDefault()
+        setOpenModal(false)
+    }
 
     const history = useHistory()
 
@@ -27,19 +38,26 @@ function HomePage() {
             {getPlaylists.length === 0 ? (
                 <S.MainContainer>
                     <S.NoResultsContainer>
-                        <S.NoResults>
-                            <p>Você ainda não tem Playlists</p>
-                            <S.AreaButton>
-                                <Button
-                                    variant='contained'
-                                    color="secondary"
-                                    type="submit"
-                                    onClick={() => goToAddMusics(history)}
-                                >
-                                    Cadastrar Playlist
-                            </Button>
-                            </S.AreaButton>
-                        </S.NoResults>
+                        {openModal ? (
+                            <PlaylistModal
+                                close={handleCloseModal}
+                            />
+                        ) : (
+                            <S.NoResults>
+                                <p>Você ainda não tem Playlists</p>
+                                <S.AreaButton>
+                                    <Button
+                                        variant='contained'
+                                        color="secondary"
+                                        type="submit"
+                                        onClick={handleOpenModal}
+                                    >
+                                        Cadastrar Playlist
+                                </Button>
+                                </S.AreaButton>
+
+                            </S.NoResults>
+                        )}
                     </S.NoResultsContainer>
                 </S.MainContainer>
             ) : (
@@ -52,19 +70,23 @@ function HomePage() {
                             return (
                                 <PlaylistCard
                                     key={playlist.id}
-                                   playlist={playlist}
-                                   
+                                    playlist={playlist}
                                 />
                             )
                         })}
                     </S.CardContainer>
-                    <S.AddCircleContainer>
-                        <S.AddCircleIconStyled
-                            style={{ fontSize: 70 }}
-                            onClick={() => goToAddMusics(history)}
+                    {openModal ? (
+                        <PlaylistModal
+                            close={handleCloseModal}
                         />
-                    </S.AddCircleContainer>
-
+                    ) : (
+                        <S.AddCircleContainer>
+                            <S.AddCircleIconStyled
+                                style={{ fontSize: 70 }}
+                                onClick={handleOpenModal}
+                            />
+                        </S.AddCircleContainer>
+                    )}
                 </S.MainContainer>
             )}
         </S.MainContainer>

@@ -32,7 +32,7 @@ function MusicFeedPage() {
                                     variant='contained'
                                     color="secondary"
                                     type="submit"
-                                    onClick={() => goToAddMusics(history)}
+                                    // onClick={() => goToAddMusics(history)}
                                 >
                                     Cadastrar músicas
                             </Button>
@@ -46,19 +46,19 @@ function MusicFeedPage() {
                             <S.TitlePage>Lista de Músicas</S.TitlePage>
                         </S.TitlePageContainer>
                         <S.CardContainer>
-                            {getMusics && getMusics.map((music) => {
+                            {/* {getMusics && getMusics.map((music) => {
                                 return (
                                     <MusicsCard
                                         key={music.id}
                                         music={music}
                                     />
                                 )
-                            })}
+                            })} */}
                         </S.CardContainer>
                         <S.AddCircleContainer>
                             <S.AddCircleIconStyled
                                 style={{ fontSize: 70 }}
-                                onClick={() => goToAddMusics(history)}
+                                // onClick={() => goToAddMusics(history)}
                             />
                         </S.AddCircleContainer>
 

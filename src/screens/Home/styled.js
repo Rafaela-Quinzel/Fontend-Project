@@ -46,6 +46,7 @@ export const AddCircleContainer = styled.div`
 
 export const AddCircleIconStyled = styled(AddCircleIcon)`
   color: ${secondaryColor};
+  width: 15px;
 `
 
 
