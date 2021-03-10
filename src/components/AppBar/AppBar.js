@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
   powerIcon: {
     cursor: 'pointer',
-    marginLeft: 30,
+    marginLeft: 35,
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
   titleNameUser: {
     flexGrow: 1,
     display: '',
-    width: '74%',
+    width: '75%',
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },

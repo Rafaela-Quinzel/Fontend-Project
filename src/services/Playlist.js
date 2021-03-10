@@ -14,6 +14,18 @@ export const createPlaylist = (body, history) => {
         })
 }
 
+
+export const addTrackToPlaylist = (body, history, id) => {
+    axios.post(`${BASE_URL}/playlist/track/${id}`, body, axiosConfig)
+        .then(response => {
+            alert('Música inserida com sucesso!')
+            goToHome(history)
+        }).catch(error => {
+            console.log(error.message)
+        })
+}
+
+
 export const deletePlaylist = (id, history) => {
     if (window.confirm("Deseja apagar esta Playlist?")){
         axios.delete(`${BASE_URL}/playlist/delete/${id}`, axiosConfig)

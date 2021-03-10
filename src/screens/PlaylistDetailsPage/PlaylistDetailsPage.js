@@ -67,7 +67,6 @@ function PlaylistDetailsPage() {
                             />
                         ) : (
                             <S.NoResults>
-
                                 <p>Você ainda não cadastrou músicas</p>
                                 <S.AreaButton>
                                     <Button
@@ -77,9 +76,8 @@ function PlaylistDetailsPage() {
                                         onClick={handleOpenModal}
                                     >
                                         Cadastrar músicas
-                            </Button>
+                                    </Button>
                                 </S.AreaButton>
-
                             </S.NoResults>
                         )}
                     </S.NoResultsContainer>

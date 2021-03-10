@@ -1,15 +1,12 @@
 import React, { useState } from 'react'
 import * as S from './styled'
-import { useHistory } from 'react-router-dom'
 import { useRequestData } from '../../hooks/useRequestData'
 import { BASE_URL, axiosConfig } from '../../constants/RequestConfig'
 import { Button } from '@material-ui/core'
 import SearchAppBar from '../../components/AppBar/AppBar'
 import LoadingInfo from '../../components/Loading/LoadingInfo'
-import { goToAddMusics, goBack } from '../../routes/coordinator'
 import PlaylistCard from '../../components/PlaylistCard/PlaylistCard'
 import { PlaylistModal } from '../../components/PlaylistModal/PlaylistModal'
-
 
 
 
@@ -25,12 +22,8 @@ function HomePage() {
         setOpenModal(false)
     }
 
-    const history = useHistory()
 
     const getPlaylists = useRequestData(`${BASE_URL}/playlist`, undefined, axiosConfig)
-
-    console.log(getPlaylists)
-
 
     return getPlaylists ? (
         <S.MainContainer>
@@ -55,7 +48,6 @@ function HomePage() {
                                         Cadastrar Playlist
                                 </Button>
                                 </S.AreaButton>
-
                             </S.NoResults>
                         )}
                     </S.NoResultsContainer>

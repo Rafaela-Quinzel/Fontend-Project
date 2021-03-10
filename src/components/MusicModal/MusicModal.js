@@ -1,16 +1,14 @@
 import React  from 'react'
 import * as S from './styled'
-import dayjs from 'dayjs'
 import { removeMusic } from '../../services/Music'
+import { dateFormat } from '../../services/dateManager'
 
 
 
 export function MusicModal(props) {
 
-    const dateFormat = dayjs(props.music.date).format("DD/MM/YYYY")
 
-    
-
+    // console.log(props.music)
 
     return (
         <S.ModalContainer>
@@ -22,13 +20,13 @@ export function MusicModal(props) {
                     Albúm:
                     <br />
                     {props.music.album}
+                    {props.music.name}
                 </S.TextModal>
                 <S.TextModal>
-                {/* Gênero(s):
-                {props.music.genre.map((genre) => {
-                    return (
-                      <p>{genre}</p>
-                    )
+                Gênero(s):
+                {props.music.name}
+                {/* {props.music.name.map((genre) => {
+                    return <p>{genre}</p>  
                 })} */}
                 </S.TextModal>
                 <S.FileContainer>
@@ -40,7 +38,7 @@ export function MusicModal(props) {
                 <S.TextDate>
                     postado:
                     <br />
-                    {dateFormat}
+                    {dateFormat(props.music.date)}
                 </S.TextDate>
                 <S.CloseModal type="button">
                     <img

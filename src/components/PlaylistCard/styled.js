@@ -1,7 +1,13 @@
 import styled from 'styled-components'
-import { mainGray, mainColor, secondaryColor } from '../../constants/Colors'
+import { mainGray, mainColor } from '../../constants/Colors'
 import Button from '@material-ui/core/Button'
 
+
+export const Wrapper = styled.div`
+  display: grid;
+  width: 20vw;
+  min-width: 250px;
+`
 
 export const SnackBar = styled.div`
   display: grid;
@@ -42,12 +48,12 @@ export const DateCard = styled.p`
 
 
 export const AreaButton = styled.div`
-  align-self: center;
+  margin: 0;
+  position: relative;
 `
 
 export const ButtonStyled = styled(Button)`
-  color: ${secondaryColor};
-  width: 83.4%;
+  width: 100%;
 `
 
 
