@@ -9,7 +9,7 @@ import DeleteIcon from '@material-ui/icons/Delete'
 
 
 export const ModalContainer = styled.div` 
-    background: rgba(242, 243, 245, 0.8);
+    background: rgba(242, 243, 245, 0.9);
     position: fixed;
     top: 0;
     bottom: 0;

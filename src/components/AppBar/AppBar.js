@@ -83,12 +83,13 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 
-export default function SearchAppBar() {
+export default function SearchAppBar(props) {
 
   const history = useHistory()
   const classes = useStyles()
 
   const username = window.localStorage.getItem("username")
+
 
   return (
     <div className={classes.root}>

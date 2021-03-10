@@ -4,8 +4,8 @@ import { goToHome } from '../routes/coordinator'
 
 
 
-export const addMusic = (body, history) => {
-    axios.post(`${BASE_URL}/music/create`, body, axiosConfig)
+export const addMusic = (body, history, id) => {
+    axios.post(`${BASE_URL}/playlist/track/${id}`, body, axiosConfig)
         .then(response => {
             alert('Música inserida com sucesso!')
             goToHome(history)
@@ -27,3 +27,5 @@ export const removeMusic = (id, history) => {
     }
 
 }
+
+// `${BASE_URL}/music/playlist/${id}?playlist${id}

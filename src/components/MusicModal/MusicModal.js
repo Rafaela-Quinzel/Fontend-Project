@@ -5,9 +5,11 @@ import { removeMusic } from '../../services/Music'
 
 
 
-export function Modal(props) {
+export function MusicModal(props) {
 
     const dateFormat = dayjs(props.music.date).format("DD/MM/YYYY")
+
+    
 
 
     return (
@@ -22,12 +24,12 @@ export function Modal(props) {
                     {props.music.album}
                 </S.TextModal>
                 <S.TextModal>
-                Gênero(s):
+                {/* Gênero(s):
                 {props.music.genre.map((genre) => {
                     return (
                       <p>{genre}</p>
                     )
-                })}
+                })} */}
                 </S.TextModal>
                 <S.FileContainer>
                     <S.Audio
