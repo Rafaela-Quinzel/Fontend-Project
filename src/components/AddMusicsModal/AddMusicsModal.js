@@ -7,6 +7,7 @@ import { addMusic } from '../../services/Music'
 import { goBack } from '../../routes/coordinator'
 import { TextField, Button } from '@material-ui/core'
 import { useProtectPage } from '../../hooks/useProtectPage'
+import { addTrackToPlaylist } from '../../services/Playlist'
 
 
 
@@ -49,7 +50,7 @@ function AddMusicsModal(props) {
             genre: genre
         }
 
-        addMusic(body, history)
+        addTrackToPlaylist(body, history)
 
     }
 

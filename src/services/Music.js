@@ -5,9 +5,9 @@ import { goToHome } from '../routes/coordinator'
 
 
 export const addMusic = (body, history, id) => {
-    axios.post(`${BASE_URL}/playlist/track/${id}`, body, axiosConfig)
+    axios.post(`${BASE_URL}/music/create`, body, axiosConfig)
         .then(response => {
-            alert('Música inserida com sucesso!')
+            alert('Música criada com sucesso!')
             goToHome(history)
         }).catch(error => {
             console.log(error.message)

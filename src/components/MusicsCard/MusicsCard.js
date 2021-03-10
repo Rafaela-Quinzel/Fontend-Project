@@ -15,10 +15,11 @@ function MusicsCard(props) {
     }
 
 
-    const handleCloseModal = (event) => {
+    const handleCloseModal = () => {
         setOpenModal(false)
     }
 
+    console.log(props.music)
  
     return (
         <S.Wrapper>
