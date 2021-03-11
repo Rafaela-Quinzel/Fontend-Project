@@ -3,6 +3,7 @@ import { BASE_URL, axiosConfig } from '../constants/RequestConfig'
 import { goToHome } from '../routes/coordinator'
 
 
+
 export const createPlaylist = (body, history) => {
     axios.post(`${BASE_URL}/playlist/create`, body, axiosConfig)
         .then(response => {
@@ -15,8 +16,9 @@ export const createPlaylist = (body, history) => {
 }
 
 
-export const addTrackToPlaylist = (body, history, id) => {
-    axios.post(`${BASE_URL}/playlist/track/${id}`, body, axiosConfig)
+export const addTrackToPlaylist = (body, history, update) => {
+   
+    axios.put(`${BASE_URL}/playlist/track`, body, axiosConfig)
         .then(response => {
             alert('Música inserida com sucesso!')
             goToHome(history)
@@ -24,6 +26,17 @@ export const addTrackToPlaylist = (body, history, id) => {
             console.log(error.message)
         })
 }
+
+// export const addTrackToPlaylist = (body, history, id, paramsId) => {
+   
+//     axios.put(`${BASE_URL}/playlist/${id}/track?music_id=${id}`, body, axiosConfig)
+//         .then(response => {
+//             alert('Música inserida com sucesso!')
+//             goToHome(history)
+//         }).catch(error => {
+//             console.log(error.message)
+//         })
+// }
 
 
 export const deletePlaylist = (id, history) => {

@@ -1,13 +1,15 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import * as S from './styled'
 import logo from '../../assets/logo.svg'
 import { useHistory, useParams } from 'react-router-dom'
 import { useForm } from '../../hooks/useForm'
-import { addMusic } from '../../services/Music'
-import { goBack } from '../../routes/coordinator'
+// import { addMusic } from '../../services/Music'
 import { TextField, Button } from '@material-ui/core'
 import { useProtectPage } from '../../hooks/useProtectPage'
 import { addTrackToPlaylist } from '../../services/Playlist'
+import { addMusicToPlaylist } from '../../services/Music'
+
+
 
 
 
@@ -27,18 +29,19 @@ function AddMusicsModal(props) {
 
     useProtectPage()
 
+
     const handleInputChange = (event) => {
         const { value, name } = event.target
 
         onChange(value, name)
     }
 
+
     const sendGenre = (event) => {
         event.preventDefault()
 
         let genre = form.genre.split(" ")
-        let i
-        for (i = 0; i < genre.length; i++) {
+        for (let i = 0; i < genre.length; i++) {
             genre[i] = genre[i].replace("#", "")
         }
 
@@ -47,12 +50,12 @@ function AddMusicsModal(props) {
             author: form.author,
             file: form.file,
             album: form.album,
-            genre: genre
+            genre: genre,
         }
 
-        addTrackToPlaylist(body, history)
-
+        addTrackToPlaylist(body, history, params.id)
     }
+
 
     return (
         <S.ModalContainer>
@@ -94,7 +97,7 @@ function AddMusicsModal(props) {
                         label='URL'
                         placeholder='Link da música'
                         name='file'
-                        type='text'
+                        type='url'
                         required
                     />
                     <br />
@@ -129,7 +132,7 @@ function AddMusicsModal(props) {
                         variant='contained'
                         color="primary"
                         type="submit"
-                        onClick={() => addMusic(props.id)}
+                        // onClick={() => addTrackToPlaylist(props.id)}
                     >
                         ADICIONAR
                     </Button>

@@ -11,23 +11,14 @@ import MusicsCard from '../../components/MusicsCard/MusicsCard'
 import AddMusicsModal from '../../components/AddMusicsModal/AddMusicsModal'
 
 
-function PlaylistDetailsPage() {
+function PlaylistDetailsPage(props) {
     const [tracks, setTracks] = useState(undefined)
     const [openModal, setOpenModal] = useState(false)
+    const [paramsId, setParamsId] = useState('')
 
     const { id } = useParams()
 
     const history = useHistory()
-
-
-    const handleOpenModal = () => {
-        setOpenModal(!openModal)
-    }
-
-    const handleCloseModal = (event) => {
-        event.preventDefault()
-        setOpenModal(false)
-    }
 
 
     useEffect(() => {
@@ -38,12 +29,25 @@ function PlaylistDetailsPage() {
         axios.get(`${BASE_URL}/playlist/${id}`, axiosConfig)
             .then((response) => {
                 setTracks(response.data[1])
-                console.log(response.data[1])
             })
             .catch((error) => {
                 console.log(error.message)
             })
     }
+
+    
+    const handleOpenModal = (id) => {
+        setOpenModal(!openModal)
+     
+
+    }
+
+    const handleCloseModal = (event) => {
+        event.preventDefault()
+        setOpenModal(false)
+    }
+
+    console.log(tracks)
 
 
     return tracks ? (
@@ -73,7 +77,7 @@ function PlaylistDetailsPage() {
                                         variant='contained'
                                         color="secondary"
                                         type="submit"
-                                        onClick={handleOpenModal}
+                                        onClick={() => handleOpenModal(tracks.id)}
                                     >
                                         Cadastrar músicas
                                     </Button>
@@ -109,13 +113,13 @@ function PlaylistDetailsPage() {
                     {openModal ? (
                         <AddMusicsModal
                             close={handleCloseModal}
-                            id={getPlaylistsDetails.id}
                         />
                     ) : (
                         <S.AddCircleContainer>
                             <S.AddCircleIconStyled
                                 style={{ fontSize: 70 }}
                                 onClick={handleOpenModal}
+                                id={tracks.id}
                             />
                         </S.AddCircleContainer>
                     )}

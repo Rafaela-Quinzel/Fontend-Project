@@ -19,7 +19,7 @@ function MusicsCard(props) {
         setOpenModal(false)
     }
 
-    console.log(props.music)
+    // console.log(props.music)
  
     return (
         <S.Wrapper>

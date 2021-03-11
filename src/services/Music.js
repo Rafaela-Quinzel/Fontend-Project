@@ -4,7 +4,7 @@ import { goToHome } from '../routes/coordinator'
 
 
 
-export const addMusic = (body, history, id) => {
+export const addMusic = (body, history) => {
     axios.post(`${BASE_URL}/music/create`, body, axiosConfig)
         .then(response => {
             alert('Música criada com sucesso!')
@@ -13,6 +13,19 @@ export const addMusic = (body, history, id) => {
             console.log(error.message)
         })
 }
+
+
+export const addMusicToPlaylist = (body, history, id, paramsId) => {
+   
+    axios.post(`${BASE_URL}/music/playlist/${id}?playlist=${paramsId}`, body, axiosConfig)
+        .then(response => {
+            alert('Música inserida com sucesso!')
+            goToHome(history)
+        }).catch(error => {
+            console.log(error.message)
+        })
+}
+
 
 export const removeMusic = (id, history) => {
     if (window.confirm("Deseja apagar esta música?")){
