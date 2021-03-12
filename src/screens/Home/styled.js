@@ -1,53 +1,77 @@
 import styled from 'styled-components'
-import { secondaryColor, mainLightGray } from '../../constants/Colors'
+import { secondaryColor, mainLightGray, primaryColor } from '../../constants/Colors'
 import AddCircleIcon from '@material-ui/icons/AddCircle'
+import { mainGray, mainColor } from '../../constants/Colors'
 
 
 
-export const MainContainer = styled.div`
-  width: 100vw;
-`
-
-export const NoResultsContainer = styled.div`
-  margin: auto 0 auto;
-`
-
-export const NoResults = styled.div`
-  display: grid;
-  justify-items: center;
-  margin: 15%;
+export const Wrapper = styled.div`
+  align-self: center;
+  margin: 2rem;
 `
 
 export const AreaButton = styled.div`
+  margin: 2% 2% 0 2%;
+`
+
+export const MainContainer = styled.div`
+  width: 100vw;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+`
+
+export const Logo = styled.img`
+  width: 250px;
   margin: 5%;
 `
 
-export const TitlePageContainer = styled.div`
-  text-align: center;
-  margin: 5%;
+export const Title = styled.h2`
+  font-weight: bold;
+  color: ${mainColor};
+  position: relative;
 `
 
-export const TitlePage = styled.h2`
-  color: ${mainLightGray};
+export const Text = styled.p`
+  color: ${mainGray};
+  margin-bottom: 20px;
+  font-size: 16px;
+  margin-top: 2%;
 `
-export const CardContainer = styled.div`
+
+export const SnackBarContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`
+
+export const SnackBar = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  padding-left: 4%;
-  grid-row-gap: 3.4rem;
+  justify-items: center;
+  margin: 2%;
+  width: 20vw;
+  min-width: 250px;
+  height: 4.5rem;
+  padding: 28px;
+  border-radius: 10px;
+  background-color: ${primaryColor};
+  word-break: break-all;
+  font-weight: bold;
+  font-size: 20px;
+  color: white;
+  cursor: pointer; 
+  &:hover{
+    transform: scale(1.2);
+    background-color: rgb(165, 13, 196);
+    transition: background-color 0.4s;
+    transition: transform 0.4s;
+  } 
 `
 
-export const AddCircleContainer = styled.div`
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  cursor: pointer;
-`
 
-export const AddCircleIconStyled = styled(AddCircleIcon)`
-  color: ${secondaryColor};
-  width: 15px;
-`
+
 
 
 
