@@ -1,21 +1,35 @@
 import React  from 'react'
 import * as S from './styled'
-import { deleteMusic } from '../../services/Music'
 import { dateFormat } from '../../services/dateManager'
+import { useParams } from 'react-router'
+import axios from 'axios'
+import { BASE_URL, axiosConfig } from '../../constants/RequestConfig'
 
 
-export function MusicModal(props) {
 
-    function deleteAndClose() {
-        deleteMusic(props.music.id)
-        props.close()
+export function MusicPlaylistModal(props) {
+
+    const params = useParams()
+
+    const removeMusicFromPlaylist = () => {
+        if (window.confirm("Deseja apagar esta música?")){
+            axios.delete(`${BASE_URL}/playlist/${params.id}/music?${props.music.id}`, axiosConfig)
+            .then(response => {
+                alert("Música removida")
+                props.close()
+            })
+            .catch((error)=>{
+                console.log(error.message)
+            })
+        }
+    
     }
 
 
     return (
         <S.ModalContainer>
             <S.WrapperModal>
-                <S.DeleteIconStyled onClick={deleteAndClose} />
+                <S.DeleteIconStyled onClick={removeMusicFromPlaylist} />
                 <S.HeaderModal>{props.music.author}</S.HeaderModal>
                 <S.TitleModal>{props.music.title}</S.TitleModal>
                 <S.TextModal>

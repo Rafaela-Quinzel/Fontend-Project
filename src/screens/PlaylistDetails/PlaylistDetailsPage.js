@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useLayoutEffect } from 'react'
 import axios from 'axios'
 import * as S from './styled'
 import { useParams, useHistory } from 'react-router-dom'
@@ -7,11 +7,15 @@ import { Button } from '@material-ui/core'
 import SearchAppBar from '../../components/AppBar/AppBar'
 import LoadingInfo from '../../components/Loading/LoadingInfo'
 import { goToAddMusics, goBack } from '../../routes/coordinator'
-import MusicsCard from '../../components/MusicsCard/MusicsCard'
-import AddMusicsModal from '../../components/AddMusicsModal/AddMusicsModal'
+import MusicsPlaylistCard from '../../components/MusicsPlaylistCard/MusicsPlaylistCard'
+import AddTrackToPLaylistModal from '../../components/AddTrackToPLaylistModal/AddTrackToPLaylistModal'
 
 
-function PlaylistDetailsPage(props) {
+import { useRequestData } from '../../hooks/useRequestData'
+
+
+
+function PlaylistDetailsPage() {
     const [tracks, setTracks] = useState(undefined)
     const [openModal, setOpenModal] = useState(false)
     const [paramsId, setParamsId] = useState('')
@@ -21,7 +25,7 @@ function PlaylistDetailsPage(props) {
     const history = useHistory()
 
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         getPlaylistsDetails()
     }, [])
 
@@ -29,25 +33,30 @@ function PlaylistDetailsPage(props) {
         axios.get(`${BASE_URL}/playlist/${id}`, axiosConfig)
             .then((response) => {
                 setTracks(response.data[1])
+                console.log(response.data)
             })
             .catch((error) => {
                 console.log(error.message)
             })
     }
 
-    
+    const getMusics = useRequestData(`${BASE_URL}/music`, undefined, axiosConfig)
+
+    // console.log(getMusics)
+
+
+   
     const handleOpenModal = (id) => {
         setOpenModal(!openModal)
-     
-
     }
+
+    console.log(tracks)
 
     const handleCloseModal = (event) => {
         event.preventDefault()
         setOpenModal(false)
     }
 
-    console.log(tracks)
 
 
     return tracks ? (
@@ -66,8 +75,9 @@ function PlaylistDetailsPage(props) {
                     </S.AreaButton>
                     <S.NoResultsContainer>
                         {openModal ? (
-                            <AddMusicsModal
+                            <AddTrackToPLaylistModal
                                 close={handleCloseModal}
+                                update={getMusics}
                             />
                         ) : (
                             <S.NoResults>
@@ -77,9 +87,9 @@ function PlaylistDetailsPage(props) {
                                         variant='contained'
                                         color="secondary"
                                         type="submit"
-                                        onClick={() => handleOpenModal(tracks.id)}
+                                        onClick={handleOpenModal}
                                     >
-                                        Cadastrar músicas
+                                        Adicionar músicas
                                     </Button>
                                 </S.AreaButton>
                             </S.NoResults>
@@ -103,7 +113,7 @@ function PlaylistDetailsPage(props) {
                     <S.CardContainer>
                         {tracks && tracks.map((music) => {
                             return (
-                                <MusicsCard
+                                <MusicsPlaylistCard
                                     key={music.id}
                                     music={music}
                                 />
@@ -111,7 +121,7 @@ function PlaylistDetailsPage(props) {
                         })}
                     </S.CardContainer>
                     {openModal ? (
-                        <AddMusicsModal
+                        <AddTrackToPLaylistModal
                             close={handleCloseModal}
                         />
                     ) : (

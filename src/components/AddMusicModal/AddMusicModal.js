@@ -6,14 +6,12 @@ import { useForm } from '../../hooks/useForm'
 // import { addMusic } from '../../services/Music'
 import { TextField, Button } from '@material-ui/core'
 import { useProtectPage } from '../../hooks/useProtectPage'
-import { addTrackToPlaylist } from '../../services/Playlist'
-import { addMusicToPlaylist } from '../../services/Music'
+// import { addTrackToPlaylist,  } from '../../services/Playlist'
+import { addTrackToPlaylist, addMusic } from '../../services/Music'
 
 
 
-
-
-function AddMusicsModal(props) {
+function AddMusicModal(props) {
 
     const { form, onChange } = useForm({
         title: "",
@@ -53,10 +51,10 @@ function AddMusicsModal(props) {
             genre: genre,
         }
 
-        addTrackToPlaylist(body, history, params.id)
+        addMusic(body, history)
     }
 
-
+    
     return (
         <S.ModalContainer>
             <S.Wrapper>
@@ -132,7 +130,7 @@ function AddMusicsModal(props) {
                         variant='contained'
                         color="primary"
                         type="submit"
-                        // onClick={() => addTrackToPlaylist(props.id)}
+                       
                     >
                         ADICIONAR
                     </Button>
@@ -150,4 +148,4 @@ function AddMusicsModal(props) {
         </S.ModalContainer>
     )
 }
-export default AddMusicsModal
+export default AddMusicModal

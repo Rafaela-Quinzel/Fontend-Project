@@ -1,92 +1,32 @@
-import React, { useState } from 'react'
+import React from 'react'
 import * as S from './styled'
-import { useRequestData } from '../../hooks/useRequestData'
-import { BASE_URL, axiosConfig } from '../../constants/RequestConfig'
-import { Button } from '@material-ui/core'
-import SearchAppBar from '../../components/AppBar/AppBar'
-import LoadingInfo from '../../components/Loading/LoadingInfo'
-import PlaylistCard from '../../components/PlaylistCard/PlaylistCard'
-import { PlaylistModal } from '../../components/PlaylistModal/PlaylistModal'
-
+import logo from '../../assets/logo.svg'
+import { useHistory } from 'react-router'
+import { goToPlaylists, goToMusics } from '../../routes/coordinator'
 
 
 function HomePage() {
-    const [openModal, setOpenModal] = useState(false)
+    const username = window.localStorage.getItem("username")
 
-    const handleOpenModal = () => {
-        setOpenModal(!openModal)
-    }
+    const history = useHistory()
 
-    const handleCloseModal = (event) => {
-        event.preventDefault()
-        setOpenModal(false)
-    }
+    return (
+        <S.Wrapper>
+            <S.MainContainer>
+                <S.Logo src={logo} />
+                <S.Title>Olá {username}!</S.Title>
+                <S.Text>O que deseja fazer?</S.Text>
 
-
-    const getPlaylists = useRequestData(`${BASE_URL}/playlist`, undefined, axiosConfig)
-
-    return getPlaylists ? (
-        <S.MainContainer>
-            <SearchAppBar wrapper="span" />
-            {getPlaylists.length === 0 ? (
-                <S.MainContainer>
-                    <S.NoResultsContainer>
-                        {openModal ? (
-                            <PlaylistModal
-                                close={handleCloseModal}
-                            />
-                        ) : (
-                            <S.NoResults>
-                                <p>Você ainda não tem Playlists</p>
-                                <S.AreaButton>
-                                    <Button
-                                        variant='contained'
-                                        color="secondary"
-                                        type="submit"
-                                        onClick={handleOpenModal}
-                                    >
-                                        Cadastrar Playlist
-                                </Button>
-                                </S.AreaButton>
-                            </S.NoResults>
-                        )}
-                    </S.NoResultsContainer>
-                </S.MainContainer>
-            ) : (
-                <S.MainContainer>
-                    <S.TitlePageContainer>
-                        <S.TitlePage>Lista de Playlists</S.TitlePage>
-                    </S.TitlePageContainer>
-                    <S.CardContainer>
-                        {getPlaylists && getPlaylists.map((playlist) => {
-                            return (
-                                <PlaylistCard
-                                    key={playlist.id}
-                                    playlist={playlist}
-                                />
-                            )
-                        })}
-                    </S.CardContainer>
-                    {openModal ? (
-                        <PlaylistModal
-                            close={handleCloseModal}
-                        />
-                    ) : (
-                        <S.AddCircleContainer>
-                            <S.AddCircleIconStyled
-                                style={{ fontSize: 70 }}
-                                onClick={handleOpenModal}
-                            />
-                        </S.AddCircleContainer>
-                    )}
-                </S.MainContainer>
-            )}
-        </S.MainContainer>
-    ) : (
-        <S.MainContainer>
-            <SearchAppBar wrapper="span" />
-            <LoadingInfo />
-        </S.MainContainer>
+            </S.MainContainer>
+            <S.SnackBarContainer>
+                <S.SnackBar onClick={() => goToMusics(history)}>
+                    MÚSICAS
+                </S.SnackBar>
+                <S.SnackBar onClick={() => goToPlaylists(history)}>
+                    PLAYLISTS
+                </S.SnackBar>
+            </S.SnackBarContainer>
+        </S.Wrapper>
     )
 }
 export default HomePage

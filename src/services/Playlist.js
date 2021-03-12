@@ -16,20 +16,34 @@ export const createPlaylist = (body, history) => {
 }
 
 
-export const addTrackToPlaylist = (body, history, update) => {
+export const addTrackToPlaylist = (body, update) => {
    
     axios.put(`${BASE_URL}/playlist/track`, body, axiosConfig)
         .then(response => {
+            console.log(response.data)
             alert('Música inserida com sucesso!')
-            goToHome(history)
+           update()
         }).catch(error => {
             console.log(error.message)
+            alert('Erro ao adicionar música!')
         })
 }
 
-// export const addTrackToPlaylist = (body, history, id, paramsId) => {
-   
-//     axios.put(`${BASE_URL}/playlist/${id}/track?music_id=${id}`, body, axiosConfig)
+// export const addMusic = (body, history) => {
+    
+//     axios.post(`${BASE_URL}/music/create`, body, axiosConfig)
+//         .then(response => {
+           
+//             console.log(response)
+//             alert('Música criada com sucesso!')
+          
+//         }).catch(error => {
+//             console.log(error.message)
+//         })
+// }
+
+// export const addTrackToPlaylist = (body, history, id) => {
+//     axios.put(`${BASE_URL}/playlist/${id}/track?music_id=${body}`, body, axiosConfig)
 //         .then(response => {
 //             alert('Música inserida com sucesso!')
 //             goToHome(history)
@@ -45,6 +59,21 @@ export const deletePlaylist = (id, history) => {
         .then(response => {
             alert("Playlist deletada!")
             goToHome(history)
+        })
+        .catch((error)=>{
+            console.log(error.message)
+        })
+    }
+
+}
+
+
+export const removeMusicFromPlaylist = (paramsId, musicId) => {
+    if (window.confirm("Deseja apagar esta música?")){
+        axios.delete(`${BASE_URL}/playlist/${paramsId}/music/${musicId}`, axiosConfig)
+        .then(response => {
+            alert("Música removida")
+            
         })
         .catch((error)=>{
             console.log(error.message)
