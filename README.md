@@ -1,7 +1,7 @@
 # Frontend-Project
 Projeto Fullstack - Repositório Frontend
 
-Website >>> 
+Website >>> spiritual-bone.surge.sh
 
 Front-end do Projeto Full Stack do bootcamp da escola Labenu. Trata-se de uma aplicação com funcionalidades básicas de um site para streaming de músicas.
 
@@ -35,21 +35,24 @@ Veja a sessão sobre deployment para mais informações.
 
 
 Funcionalidades:
-Cadastro
-Login
-Exibir o nome da(o) usuária(o) que estiver logada(o)
-Criar música
-Listar todas as músicas
-Exibir detalhes de uma música específica
-Criar playlist
-Adicionar música à playlist escolhida
-Listar todas as músicas da playlist escolhida
+- Cadastro
+- Login
+- Exibir o nome da(o) usuária(o) que estiver logada(o)
+- Criar música
+- Deletar música
+- Listar todas as músicas
+- Exibir detalhes de uma música específica
+- Criar playlist
+- Deletar playlist
+- Adicionar música à playlist escolhida
+- Listar todas as músicas da playlist escolhida
 
-Bibliotecas e Frameworks
-React
-React Router Dom
-Dayjs
-Axios
-styled-components
-Material-UI
+Bibliotecas e Frameworks:
+- React
+- React Router Dom
+- Dayjs
+- Axios
+- styled-components
+- Material-UI
+- Lottie
 
