@@ -1,11 +1,5 @@
 import styled from "styled-components"
-import {
-    primaryColor,
-    mainLightGray,
-    secondaryColor
-} from '../../constants/Colors'
-import DeleteIcon from '@material-ui/icons/Delete'
-
+import { primaryColor, mainLightGray } from '../../constants/Colors'
 
 
 export const ModalContainer = styled.div` 
@@ -58,8 +52,6 @@ export const TextModal = styled.strong`
 export const FileContainer = styled.div`
     font-size: 0.8rem;
     margin: 2% 4% 2% 0;
-    /* border: solid 3px ${secondaryColor};
-    border-radius: 100px; */
     display: flex;
     align-self: center;
 `;
@@ -99,13 +91,3 @@ export const LinkFile = styled.a`
     text-decoration: none;
 `;
 
-export const DeleteIconStyled = styled(DeleteIcon)`
-    color: ${mainLightGray};
-    width: 15px;
-    position: absolute;
-    top: 0.8rem;
-    left: 0.8rem;
-    border: 0;
-    font-size: 0;
-    cursor: pointer;
-`

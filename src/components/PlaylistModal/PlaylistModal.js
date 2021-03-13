@@ -5,15 +5,18 @@ import { useHistory } from 'react-router-dom'
 import { useForm } from '../../hooks/useForm'
 import { createPlaylist } from '../../services/Playlist'
 import { TextField, Button } from '@material-ui/core'
+import { useProtectPage } from '../../hooks/useProtectPage'
 
 
 
 export function PlaylistModal(props) {
 
-    const { form, onChange } = useForm({
+    const { form, onChange, restState } = useForm({
         title: "",
         subtitle: ""
     })
+
+    useProtectPage()
 
     const history = useHistory()
 
@@ -22,11 +25,11 @@ export function PlaylistModal(props) {
         const { value, name } = event.target
 
         onChange(value, name)
-        
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = () => {
         createPlaylist(form, history)
+        restState()
     }
 
 

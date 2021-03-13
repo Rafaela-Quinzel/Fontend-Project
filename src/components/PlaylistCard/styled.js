@@ -46,7 +46,6 @@ export const DateCard = styled.p`
   font-size: 12px;
 `
 
-
 export const AreaButton = styled.div`
   margin: 0;
   position: relative;

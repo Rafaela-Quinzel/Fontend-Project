@@ -7,13 +7,16 @@ import { Button } from '@material-ui/core'
 import SearchAppBar from '../../components/AppBar/AppBar'
 import LoadingInfo from '../../components/Loading/LoadingInfo'
 import { goToHome } from '../../routes/coordinator'
-import MusicsCard from '../../components/MusicsPlaylistCard/MusicsPlaylistCard'
-import AddMusicsModal from '../../components/AddTrackToPLaylistModal/AddTrackToPLaylistModal'
+import MusicsCard from '../../components/MusicsCard/MusicsCard'
+import AddMusicsModal from '../../components/AddMusicModal/AddMusicModal'
+import { useProtectPage } from '../../hooks/useProtectPage'
 
 
 
 function MusicsPage() {
     const [openModal, setOpenModal] = useState(false)
+
+    useProtectPage()
 
     const history = useHistory()
 
@@ -28,7 +31,7 @@ function MusicsPage() {
 
     const getMusics = useRequestData(`${BASE_URL}/music`, undefined, axiosConfig)
 
-
+ 
     return getMusics ? (
         <S.MainContainer>
             <SearchAppBar wrapper="span" />
@@ -42,6 +45,11 @@ function MusicsPage() {
             </Button>
             {getMusics.length === 0 ? (
                 <S.MainContainer>
+                    {openModal ? (
+                        <AddMusicsModal
+                            close={handleCloseModal}
+                        />
+                    ) : (
                     <S.NoResultsContainer>
                         <S.NoResults>
                             <p>Você ainda não cadastrou músicas</p>
@@ -57,6 +65,7 @@ function MusicsPage() {
                             </S.AreaButton>
                         </S.NoResults>
                     </S.NoResultsContainer>
+                    )}
                 </S.MainContainer>
             ) : (
                 <S.MainContainer>

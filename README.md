@@ -3,7 +3,6 @@ Projeto Fullstack - Repositório Frontend
 
 Website >>> 
 
-Português | English
 Front-end do Projeto Full Stack do bootcamp da escola Labenu. Trata-se de uma aplicação com funcionalidades básicas de um site para streaming de músicas.
 
 Esse projeto foi desenvolvido com Create React App.
