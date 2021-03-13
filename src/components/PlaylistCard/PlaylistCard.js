@@ -28,7 +28,7 @@ function PlaylistCard(props) {
                 startIcon={<DeleteIcon />}
                 onClick={() => deletePlaylist(props.playlist.id)}
             >
-                Delete playlist
+                DELETAR PLAYLIST
             </S.ButtonStyled>
             </S.AreaButton>
         </S.Wrapper>

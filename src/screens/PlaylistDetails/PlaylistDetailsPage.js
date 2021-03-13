@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useLayoutEffect } from 'react'
+import React, { useState, useLayoutEffect } from 'react'
 import axios from 'axios'
 import * as S from './styled'
 import { useParams, useHistory } from 'react-router-dom'
@@ -6,20 +6,19 @@ import { BASE_URL, axiosConfig } from '../../constants/RequestConfig'
 import { Button } from '@material-ui/core'
 import SearchAppBar from '../../components/AppBar/AppBar'
 import LoadingInfo from '../../components/Loading/LoadingInfo'
-import { goToAddMusics, goBack } from '../../routes/coordinator'
+import { goBack } from '../../routes/coordinator'
 import MusicsPlaylistCard from '../../components/MusicsPlaylistCard/MusicsPlaylistCard'
 import AddTrackToPLaylistModal from '../../components/AddTrackToPLaylistModal/AddTrackToPLaylistModal'
-
-
-import { useRequestData } from '../../hooks/useRequestData'
+import { useProtectPage } from '../../hooks/useProtectPage'
 
 
 
 function PlaylistDetailsPage() {
     const [tracks, setTracks] = useState(undefined)
     const [openModal, setOpenModal] = useState(false)
-    const [paramsId, setParamsId] = useState('')
 
+    useProtectPage()
+    
     const { id } = useParams()
 
     const history = useHistory()
@@ -33,30 +32,23 @@ function PlaylistDetailsPage() {
         axios.get(`${BASE_URL}/playlist/${id}`, axiosConfig)
             .then((response) => {
                 setTracks(response.data[1])
-                console.log(response.data)
             })
             .catch((error) => {
                 console.log(error.message)
             })
     }
 
-    const getMusics = useRequestData(`${BASE_URL}/music`, undefined, axiosConfig)
-
-    // console.log(getMusics)
-
-
-   
-    const handleOpenModal = (id) => {
+  
+    const handleOpenModal = () => {
         setOpenModal(!openModal)
     }
 
-    console.log(tracks)
+   
 
     const handleCloseModal = (event) => {
         event.preventDefault()
         setOpenModal(false)
     }
-
 
 
     return tracks ? (
@@ -77,7 +69,6 @@ function PlaylistDetailsPage() {
                         {openModal ? (
                             <AddTrackToPLaylistModal
                                 close={handleCloseModal}
-                                update={getMusics}
                             />
                         ) : (
                             <S.NoResults>
@@ -128,8 +119,7 @@ function PlaylistDetailsPage() {
                         <S.AddCircleContainer>
                             <S.AddCircleIconStyled
                                 style={{ fontSize: 70 }}
-                                onClick={handleOpenModal}
-                                id={tracks.id}
+                                onClick={handleOpenModal} 
                             />
                         </S.AddCircleContainer>
                     )}

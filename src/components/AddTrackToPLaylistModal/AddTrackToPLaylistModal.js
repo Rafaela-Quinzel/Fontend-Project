@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import * as S from './styled'
 import logo from '../../assets/logo.svg'
-import { useHistory, useParams } from 'react-router-dom'
-import { useForm } from '../../hooks/useForm'
-// import { addMusic } from '../../services/Music'
+import { useParams } from 'react-router-dom'
 import { Button } from '@material-ui/core'
 import { useProtectPage } from '../../hooks/useProtectPage'
-// import { addTrackToPlaylist,  } from '../../services/Playlist'
 import { addTrackToPlaylist } from '../../services/Playlist'
-
-
 import { BASE_URL, axiosConfig } from '../../constants/RequestConfig'
 import { useRequestData } from '../../hooks/useRequestData'
+
 
 
 
@@ -22,19 +18,23 @@ function AddTrackToPLaylistModal(props) {
 
     const params = useParams()
 
+    useProtectPage()
+
 
     const getMusics = useRequestData(`${BASE_URL}/music`, undefined, axiosConfig)
 
     useEffect(() => {
-        if (getMusics) {
+        if (getMusics === true) {
             setOption(getMusics[0].title)
             setSelectedMusic(getMusics[0])
+            setMusics(getMusics)
+        } else{
+            setOption(getMusics)
+            setSelectedMusic(getMusics)
             setMusics(getMusics)
         }
     }, [getMusics])
 
-
-    console.log(getMusics)
 
     const handleChange = (event) => {
         const musicTitle = event.target.value
@@ -48,39 +48,50 @@ function AddTrackToPLaylistModal(props) {
         event.preventDefault()
 
         const body = {
-            musicId: selectedMusic.id,
-            playlistId: musics.id
+            music_id: selectedMusic.id,
+            playlist_id: params.id
         }
 
-        addTrackToPlaylist(body, props.update)
+        addTrackToPlaylist(body)
+
     }
 
-    console.log(option)
-  
+
     return (
         <S.ModalContainer>
             <S.Wrapper>
                 <S.Logo src={logo} />
                 <S.TitlePage>Adcionar música</S.TitlePage>
                 <S.FormConteiner onSubmit={onSubmitForm}>
-                <select onChange={handleChange}>
-                    <option value="">Nenhum</option>
-                    {getMusics && getMusics.map((item) => {
-                        return (
-                            <option key={item.id} value={option}>{item.author} - {item.title}</option>
-                        )
-                    })}
-                </select>
-
-                <Button
-                        variant='contained'
-                        color="primary"
-                        type="submit"
-
-                    >
-                        ADICIONAR
-                    </Button>
+                    <S.SelectContainer>
+                        <S.Select onChange={handleChange} value={option}>
+                            <S.Options value="">Nenhum</S.Options>
+                            {getMusics && getMusics.map((item) => {
+                                if(item.length === 0){
+                                    return <p>Nenhuma música encontrada</p>
+                                }
+                                return (
+                                    <S.Options
+                                        key={item.id}
+                                        value={item.title}
+                                    >
+                                        {item.author} - {item.title}
+                                    </S.Options>
+                                )
+                            })}
+                        </S.Select>
+                    </S.SelectContainer>
                     <S.AreaButton>
+                        <Button
+                            variant='contained'
+                            color="primary"
+                            type="submit"
+                            style={{ margin: '10px 0 10px 0' }}
+
+                        >
+                            ADICIONAR
+                    </Button>
+
                         <Button
                             variant="outlined"
                             color="primary"

@@ -1,13 +1,11 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import * as S from './styled'
 import logo from '../../assets/logo.svg'
-import { useHistory, useParams } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { useForm } from '../../hooks/useForm'
-// import { addMusic } from '../../services/Music'
 import { TextField, Button } from '@material-ui/core'
 import { useProtectPage } from '../../hooks/useProtectPage'
-// import { addTrackToPlaylist,  } from '../../services/Playlist'
-import { addTrackToPlaylist, addMusic } from '../../services/Music'
+import { addMusic } from '../../services/Music'
 
 
 
@@ -21,12 +19,10 @@ function AddMusicModal(props) {
         genre: ""
     })
 
-    const history = useHistory()
-
-    const params = useParams()
 
     useProtectPage()
 
+    const history = useHistory()
 
     const handleInputChange = (event) => {
         const { value, name } = event.target

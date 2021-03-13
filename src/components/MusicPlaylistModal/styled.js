@@ -58,8 +58,6 @@ export const TextModal = styled.strong`
 export const FileContainer = styled.div`
     font-size: 0.8rem;
     margin: 2% 4% 2% 0;
-    /* border: solid 3px ${secondaryColor};
-    border-radius: 100px; */
     display: flex;
     align-self: center;
 `;

@@ -1,32 +1,27 @@
-import React  from 'react'
+import React from 'react'
 import * as S from './styled'
-import { deleteMusic } from '../../services/Music'
 import { dateFormat } from '../../services/dateManager'
 
 
-export function MusicModal(props) {
 
-    function deleteAndClose() {
-        deleteMusic(props.music.id)
-        props.close()
-    }
+
+export function MusicModal(props) {
 
 
     return (
         <S.ModalContainer>
             <S.WrapperModal>
-                <S.DeleteIconStyled onClick={deleteAndClose} />
                 <S.HeaderModal>{props.music.author}</S.HeaderModal>
                 <S.TitleModal>{props.music.title}</S.TitleModal>
                 <S.TextModal>
                     Albúm:
                     <br />
                     {props.music.album}
-                    {props.music.name}
                 </S.TextModal>
                 <S.TextModal>
                     Gênero(s):
-                {props.music.name}
+                    <br />
+                    {props.music.genre}
                 </S.TextModal>
                 <S.FileContainer>
                     <S.Audio

@@ -1,8 +1,5 @@
 import styled from "styled-components"
 import { mainColor } from "../../constants/Colors"
-import { TextField, DialogContent, DialogActions, Button } from '@material-ui/core'
-import { lightGradient } from '../../constants/Colors'
-
 
 export const ModalContainer = styled.div` 
   background: rgba(242, 243, 245, 0.9);
@@ -25,7 +22,7 @@ export const Wrapper = styled.div`
   position: relative;  
   width: 100%;
   max-width: 420px;
-  height: 85vh;
+  height: 70vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -54,39 +51,24 @@ export const FormConteiner = styled.form`
   border-radius: 2px;
 `
 
+export const SelectContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 15% 0 5% 0;
+`
+
+export const Select = styled.select`
+  width: 100%;
+  line-height: 2%;
+`
+
+export const Options = styled.option`
+  padding: 10%;
+`
+
 export const AreaButton = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 2%;
+  margin-top: 4%;
 `
 
-export const DialogContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-`;
-
-export const FlexForm = styled.form`
-    display: flex;
-    flex-direction: column;
-    width: 85vw;
-    max-width: 100%;
-    padding: 20px;
-`;
-
-export const StyledDialogContent = styled(DialogContent)`
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-`;
-
-export const StyledTextField = styled(TextField)`
-    width: 100%;
-`;
-
-export const StyledDialogActions = styled(DialogActions)`
-    margin: 16px;
-`;
-
-export const StyledButton = styled(Button)`
-    background-image: linear-gradient(${lightGradient});
-`;

@@ -16,17 +16,4 @@ export const mainWhite = '#FFFFFF'
 export const mainRed = 'red'
 
 
-export const backgroundGradient = `
-    rgba(0, 0, 0, 1), 
-    rgba(26, 20, 71, 1), 
-    rgba(88, 11, 154, 0.8633), 
-    rgba(201, 71, 255, 1)
-`;
-
-export const lightGradient = `
-    to left,
-    rgba(110, 93, 255, 1),
-    rgba(201, 71, 255, 1)
-`;
-
 

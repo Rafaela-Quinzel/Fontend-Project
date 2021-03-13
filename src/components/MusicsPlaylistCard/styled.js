@@ -1,10 +1,12 @@
 import styled from 'styled-components'
 import { mainGray, mainColor } from '../../constants/Colors'
-
+import Button from '@material-ui/core/Button'
 
 
 export const Wrapper = styled.div`
-
+  display: grid;
+  width: 20vw;
+  min-width: 250px;
 `
 
 export const SnackBar = styled.div`
@@ -12,17 +14,16 @@ export const SnackBar = styled.div`
   bottom: 60px;
   width: 20vw;
   min-width: 250px;
-  height: 130px;
+  height: 25vh;
   padding: 28px;
-  border-radius: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   background-color: ${mainColor};
   word-break: break-all;
   cursor: pointer; 
   &:hover{
-    transform: scale(1.1);
     background-color: rgb(165, 13, 196);
     transition: background-color 0.4s;
-    transition: transform 0.4s;
   } 
 `
 
@@ -37,6 +38,15 @@ export const TitleCard = styled.p`
   font-size: 20px;
   color: white;
   position: relative;
+`
+
+export const AreaButton = styled.div`
+  margin: 0;
+  position: relative;
+`
+
+export const ButtonStyled = styled(Button)`
+  width: 100%;
 `
 
 

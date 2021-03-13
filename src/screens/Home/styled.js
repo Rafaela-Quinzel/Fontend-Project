@@ -1,6 +1,5 @@
 import styled from 'styled-components'
-import { secondaryColor, mainLightGray, primaryColor } from '../../constants/Colors'
-import AddCircleIcon from '@material-ui/icons/AddCircle'
+import { primaryColor } from '../../constants/Colors'
 import { mainGray, mainColor } from '../../constants/Colors'
 
 
