@@ -38,8 +38,8 @@ Este projeto foi desenvolvido no curso da `Labenu` é um projeto desenvolvido em
 
 ### Bibliotecas, Frameworks e recursos utilizados neste projeto:
 
-<div style="margin-top: 2%;">
-   <a href="https://pt-br.reactjs.org/" style="width: 60px;">
+<div style="margin-top: 2%; width: 100%;">
+   <a href="https://pt-br.reactjs.org/" style="margin-right: 10%">
       <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" alt="react" width="30" height="30" style="margin: 5px 30px 0 10px"/>
    </a>
    <a href="https://material-ui.com/" style="margin-right: 10%">
