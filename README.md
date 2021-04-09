@@ -4,7 +4,8 @@
 
 Este projeto foi desenvolvido no curso da `Labenu` é um projeto desenvolvido em React que tem as funcionalidades básicas para uma streaming de músicas.
 
-`Link do surge:`
+`Link do surge:` zesty-grape.surge.sh
+
 
 ***
 <br/>
