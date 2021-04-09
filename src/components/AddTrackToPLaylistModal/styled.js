@@ -4,6 +4,7 @@ import { mainColor } from "../../constants/Colors"
 export const ModalContainer = styled.div` 
   background: rgba(242, 243, 245, 0.9);
   position: fixed;
+  z-index: 9;
   top: 0;
   bottom: 0;
   left: 0;
@@ -51,13 +52,27 @@ export const FormConteiner = styled.form`
   border-radius: 2px;
 `
 
-export const SelectContainer = styled.div`
+export const SelectContainer = styled.form`
   display: flex;
   flex-direction: column;
-  margin: 15% 0 5% 0;
+  margin: 15% 0 0 0;
 `
 
-export const Select = styled.select`
+export const Input = styled.input`
+  margin: 15% 0 2% 0;
+  padding: 12px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  font-size: 15px;
+  cursor: pointer;
+
+  &:focus{
+    outline: none !important;
+    border: 1px solid ${mainColor} !important;
+  }
+`
+
+export const Select = styled.datalist`
   width: 100%;
   line-height: 2%;
 `

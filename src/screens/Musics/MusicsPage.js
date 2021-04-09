@@ -4,12 +4,12 @@ import { useHistory } from 'react-router-dom'
 import { useRequestData } from '../../hooks/useRequestData'
 import { BASE_URL, axiosConfig } from '../../constants/RequestConfig'
 import { Button } from '@material-ui/core'
-import SearchAppBar from '../../components/AppBar/AppBar'
 import LoadingInfo from '../../components/Loading/LoadingInfo'
 import { goToHome } from '../../routes/coordinator'
 import MusicsCard from '../../components/MusicsCard/MusicsCard'
 import AddMusicsModal from '../../components/AddMusicModal/AddMusicModal'
 import { useProtectPage } from '../../hooks/useProtectPage'
+import SearchField from '../../components/SearchField/SearchField'
 
 
 
@@ -29,20 +29,27 @@ function MusicsPage() {
         setOpenModal(false)
     }
 
+    
+
+  
     const getMusics = useRequestData(`${BASE_URL}/music`, undefined, axiosConfig)
 
- 
+  
+
+
     return getMusics ? (
         <S.MainContainer>
-            <SearchAppBar wrapper="span" />
-            <Button
-                variant="outlined"
-                color="primary"
-                style={{ margin: '15px 0 0 20px' }}
-                onClick={() => goToHome(history)}
-            >
-                VOLTAR
+            <S.Wapper>
+                <Button
+                    variant="outlined"
+                    color="primary"
+                    style={{ width: "120px", height: "40px" }}
+                    onClick={() => goToHome(history)}
+                >
+                    VOLTAR
             </Button>
+                <SearchField/>
+            </S.Wapper>
             {getMusics.length === 0 ? (
                 <S.MainContainer>
                     {openModal ? (
@@ -50,21 +57,21 @@ function MusicsPage() {
                             close={handleCloseModal}
                         />
                     ) : (
-                    <S.NoResultsContainer>
-                        <S.NoResults>
-                            <p>Você ainda não cadastrou músicas</p>
-                            <S.AreaButton>
-                                <Button
-                                    variant='contained'
-                                    color="secondary"
-                                    type="submit"
-                                    onClick={handleOpenModal}
-                                >
-                                    Cadastrar músicas
+                        <S.NoResultsContainer>
+                            <S.NoResults>
+                                <p>Você ainda não cadastrou músicas</p>
+                                <S.AreaButton>
+                                    <Button
+                                        variant='contained'
+                                        color="secondary"
+                                        type="submit"
+                                        onClick={handleOpenModal}
+                                    >
+                                        Cadastrar músicas
                             </Button>
-                            </S.AreaButton>
-                        </S.NoResults>
-                    </S.NoResultsContainer>
+                                </S.AreaButton>
+                            </S.NoResults>
+                        </S.NoResultsContainer>
                     )}
                 </S.MainContainer>
             ) : (
@@ -99,7 +106,6 @@ function MusicsPage() {
         </S.MainContainer>
     ) : (
         <S.MainContainer>
-            <SearchAppBar wrapper="span" />
             <LoadingInfo />
         </S.MainContainer>
     )

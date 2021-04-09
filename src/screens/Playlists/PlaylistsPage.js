@@ -3,7 +3,6 @@ import * as S from './styled'
 import { useRequestData } from '../../hooks/useRequestData'
 import { BASE_URL, axiosConfig } from '../../constants/RequestConfig'
 import { Button } from '@material-ui/core'
-import SearchAppBar from '../../components/AppBar/AppBar'
 import LoadingInfo from '../../components/Loading/LoadingInfo'
 import PlaylistCard from '../../components/PlaylistCard/PlaylistCard'
 import { PlaylistModal } from '../../components/PlaylistModal/PlaylistModal'
@@ -31,7 +30,6 @@ function PlaylistPage() {
 
     return getPlaylists ? (
         <S.MainContainer>
-            <SearchAppBar wrapper="span" />
             <Button
                 variant="outlined"
                 color="primary"
@@ -96,7 +94,6 @@ function PlaylistPage() {
         </S.MainContainer>
     ) : (
         <S.MainContainer>
-            <SearchAppBar wrapper="span" />
             <LoadingInfo />
         </S.MainContainer>
     )

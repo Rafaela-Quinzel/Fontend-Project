@@ -4,7 +4,6 @@ import * as S from './styled'
 import { useParams, useHistory } from 'react-router-dom'
 import { BASE_URL, axiosConfig } from '../../constants/RequestConfig'
 import { Button } from '@material-ui/core'
-import SearchAppBar from '../../components/AppBar/AppBar'
 import LoadingInfo from '../../components/Loading/LoadingInfo'
 import { goBack } from '../../routes/coordinator'
 import MusicsPlaylistCard from '../../components/MusicsPlaylistCard/MusicsPlaylistCard'
@@ -26,7 +25,7 @@ function PlaylistDetailsPage() {
 
     useLayoutEffect(() => {
         getPlaylistsDetails()
-    }, [])
+    }, [tracks])
 
     const getPlaylistsDetails = () => {
         axios.get(`${BASE_URL}/playlist/${id}`, axiosConfig)
@@ -44,7 +43,6 @@ function PlaylistDetailsPage() {
     }
 
    
-
     const handleCloseModal = (event) => {
         event.preventDefault()
         setOpenModal(false)
@@ -53,7 +51,6 @@ function PlaylistDetailsPage() {
 
     return tracks ? (
         <S.MainContainer>
-            <SearchAppBar wrapper="span" />
             {tracks.length === 0 ? (
                 <S.MainContainer>
                     <S.AreaButton>
@@ -128,7 +125,6 @@ function PlaylistDetailsPage() {
         </S.MainContainer>
     ) : (
         <S.MainContainer>
-            <SearchAppBar wrapper="span" />
             <LoadingInfo />
         </S.MainContainer>
     )

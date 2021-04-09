@@ -8,6 +8,12 @@ export const MainContainer = styled.div`
   width: 100vw;
 `
 
+export const Wapper = styled.div`
+  display: flex;
+  padding: 28px;
+  justify-content: space-between;
+`
+
 export const NoResultsContainer = styled.div`
   margin: auto 0 auto;
 `
@@ -24,12 +30,13 @@ export const AreaButton = styled.div`
 
 export const TitlePageContainer = styled.div`
   text-align: center;
-  margin: 5%;
+  margin: 2% auto 8% auto;
 `
 
 export const TitlePage = styled.h2`
   color: ${mainLightGray};
 `
+
 export const CardContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);

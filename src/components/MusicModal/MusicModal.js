@@ -1,12 +1,12 @@
 import React from 'react'
 import * as S from './styled'
 import { dateFormat } from '../../services/dateManager'
+import ReactAudioPlayer from 'react-audio-player'
 
 
 
 
 export function MusicModal(props) {
-
 
     return (
         <S.ModalContainer>
@@ -24,9 +24,11 @@ export function MusicModal(props) {
                     {props.music.genre}
                 </S.TextModal>
                 <S.FileContainer>
-                    <S.Audio
-                        src={props.music.file}
-                        controls
+                    <ReactAudioPlayer 
+                    src={props.music.file} 
+                    controls={true} 
+                    type="audio/ogg" 
+                    crossorigin="*"
                     />
                 </S.FileContainer>
                 <S.TextDate>

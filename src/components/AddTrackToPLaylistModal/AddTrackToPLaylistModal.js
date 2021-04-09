@@ -10,7 +10,6 @@ import { useRequestData } from '../../hooks/useRequestData'
 
 
 
-
 function AddTrackToPLaylistModal(props) {
     const [option, setOption] = useState('')
     const [musics, setMusics] = useState([])
@@ -64,10 +63,11 @@ function AddTrackToPLaylistModal(props) {
                 <S.TitlePage>Adcionar música</S.TitlePage>
                 <S.FormConteiner onSubmit={onSubmitForm}>
                     <S.SelectContainer>
-                        <S.Select onChange={handleChange} value={option}>
+                        <S.Input list="historico" placeholder="Selecione ou pesquise uma música"/>
+                        <S.Select onChange={handleChange} value={option} id="historico" >
                             <S.Options value="">Nenhum</S.Options>
                             {getMusics && getMusics.map((item) => {
-                                if(item.length === 0){
+                                if(item.length === 0 && item === undefined){
                                     return <p>Nenhuma música encontrada</p>
                                 }
                                 return (
@@ -75,7 +75,7 @@ function AddTrackToPLaylistModal(props) {
                                         key={item.id}
                                         value={item.title}
                                     >
-                                        {item.author} - {item.title}
+                                       {item.author}
                                     </S.Options>
                                 )
                             })}
