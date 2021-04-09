@@ -16,12 +16,14 @@
     html {
         font-size: 87.5%;
     }
+
+    
 }
 
 
 body, input, textarea, button {
     font: 400 1rem "Inter", sans-serif;
-    background: rgb(219, 218, 218);
+    background: rgb(216, 214, 214);
 }
 
 

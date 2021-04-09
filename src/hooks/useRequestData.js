@@ -9,12 +9,15 @@ export function useRequestData(url, initialState) {
     useEffect(() => {
         axios
             .get(url, axiosConfig)
-            .then((response) => {
-                setData(response.data) 
+            .then((response) => {  
+                setData(response.data)
             })
             .catch((error) => {
                 console.log(error.message)
             })
+            axios.create({
+                withCredentials: true
+                })
     }, [url])
 
     return data

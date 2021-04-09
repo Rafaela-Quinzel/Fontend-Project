@@ -3,9 +3,7 @@ import { useHistory } from 'react-router-dom'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
-import InputBase from '@material-ui/core/InputBase'
-import { fade, makeStyles } from '@material-ui/core/styles'
-import SearchIcon from '@material-ui/icons/Search'
+import { makeStyles } from '@material-ui/core/styles'
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew'
 import { logout } from '../../routes/coordinator'
 
@@ -18,71 +16,23 @@ const useStyles = makeStyles((theme) => ({
   },
   powerIcon: {
     cursor: 'pointer',
-    marginLeft: 35,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
+    marginLeft: 40,
   },
   title: {
     flexGrow: 1,
     display: '',
-    width: '1%',
-    marginLeft: 0,
-    [theme.breakpoints.up('sm')]: {
-      display: 'block',
-    },
+    marginRight: 30
   },
   titleNameUser: {
     flexGrow: 1,
     display: '',
-    width: '75%',
-    [theme.breakpoints.up('sm')]: {
-      display: 'block',
-    },
-  },
-  search: {
-    position: 'relative',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
-    '&:hover': {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
-    },
-    marginLeft: 0,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(1),
-      width: 'auto',
-    },
-  },
-  searchIcon: {
-    padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  inputRoot: {
-    color: 'inherit',
-  },
-  inputInput: {
-    padding: theme.spacing(1, 1, 1, 0),
-    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: '12ch',
-      '&:focus': {
-        width: '20ch',
-      },
-
-    },
-  },
+    width: '85%',
+    marginRight: 40
+  }
 }))
 
 
-export default function SearchAppBar(props) {
+export default function SearchAppBar() {
 
   const history = useHistory()
   const classes = useStyles()
@@ -94,23 +44,9 @@ export default function SearchAppBar(props) {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </div>
-
           <Typography
             className={classes.titleNameUser}
-            align={'right'}
+            align={'left'}
             variant="h6"
             noWrap
           >
@@ -128,7 +64,6 @@ export default function SearchAppBar(props) {
             noWrap >
             Logout
           </Typography>
-
         </Toolbar>
       </AppBar>
     </div>

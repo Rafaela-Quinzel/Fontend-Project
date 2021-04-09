@@ -5,6 +5,7 @@ import { primaryColor, mainLightGray } from '../../constants/Colors'
 export const ModalContainer = styled.div` 
     background: rgba(242, 243, 245, 0.9);
     position: fixed;
+    z-index: 9;
     top: 0;
     bottom: 0;
     left: 0;
@@ -56,9 +57,11 @@ export const FileContainer = styled.div`
     align-self: center;
 `;
 
-export const Audio = styled.audio`
-    width: 25rem;
-    height: 2rem;
+
+
+export const Video = styled.video`
+    /* width: 25rem;
+    height: 2rem; */
 `;
 
 
